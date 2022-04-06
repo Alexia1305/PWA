@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mar. 05 avr. 2022 à 17:21
--- Version du serveur : 5.7.36
--- Version de PHP : 7.4.26
+-- Généré le : mer. 06 avr. 2022 à 19:18
+-- Version du serveur :  5.7.31
+-- Version de PHP : 7.3.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -30,6 +30,8 @@ SET time_zone = "+00:00";
 DROP TABLE IF EXISTS `boite`;
 CREATE TABLE IF NOT EXISTS `boite` (
   `id_boite` int(11) NOT NULL,
+  `nom` varchar(255) NOT NULL,
+  `description` text NOT NULL,
   PRIMARY KEY (`id_boite`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -37,8 +39,8 @@ CREATE TABLE IF NOT EXISTS `boite` (
 -- Déchargement des données de la table `boite`
 --
 
-INSERT INTO `boite` (`id_boite`) VALUES
-(1);
+INSERT INTO `boite` (`id_boite`, `nom`, `description`) VALUES
+(1, '', '');
 
 -- --------------------------------------------------------
 
@@ -136,6 +138,7 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
   `nom` varchar(25) NOT NULL,
   `prenom` varchar(25) NOT NULL,
   `mdp` varchar(250) NOT NULL,
+  `mail` varchar(255) NOT NULL,
   PRIMARY KEY (`id_utilisateur`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
@@ -143,9 +146,9 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
 -- Déchargement des données de la table `utilisateur`
 --
 
-INSERT INTO `utilisateur` (`id_utilisateur`, `nom`, `prenom`, `mdp`) VALUES
-(1, 'D\'Hertog', 'Arthur', 'arthur'),
-(2, 'Dache', 'Alexandra', 'alexandra');
+INSERT INTO `utilisateur` (`id_utilisateur`, `nom`, `prenom`, `mdp`, `mail`) VALUES
+(1, 'D\'Hertog', 'Arthur', '$2y$10$pNJNxxxW7nD3vt04KxOh8uEiQURHCQ6I/3FbLusXVUQ50hobNXX6a', 'arthur@dhertog.be'),
+(2, 'Dache', 'Alexandra', 'alexandra', '');
 
 --
 -- Contraintes pour les tables déchargées
