@@ -1,9 +1,11 @@
+<?php session_start() ?>
+
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="js.js"></script>
+  
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,53 +23,16 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="index.html">
-    <img src="images/toolbox.png" width="35" height="35" alt="">
-  </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<?php include("navbar.php");  ?>
+<?php include("dbconnect.php");  ?>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
+<?php if(isset($_SESSION['id'])){ ?>
 
-      <li class="nav-item">
-        <a class="nav-link" href="#">Vos boîtes à outils</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Paramètres</a>
-      </li>
-
-
-    </ul>
-    <ul class="navbar-nav mr-auto">
-      <li>
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="Rechercher des outils" aria-label="Rechercher">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
-        </form>
-      </li>
-    </ul>
-
-    <ul class="navbar-nav mr-right">
-
-      <li class="nav-item">
-        <a href="connect.html"><button class="btn btn-outline-light my-2 my-sm-0" type="submit" >Connexion</button></a>
-      </li>
-    </ul>
-  </div>
-</nav>
-
-
-
-<!-- HTML !-->
 <center>
-
 <button class="button-54" role="button" id="buttoncreate" style="margin-top: 32vh;" onclick="create()">Créez votre boîte à outils !</button>
 </center>
 <style type="text/css">
-/* CSS */
+
 .button-54 {
   font-family: "Open Sans", sans-serif;
   font-size: 16px;
@@ -108,95 +73,39 @@
     <h1>Boîte à outils</h1>
     <p>Remplissez les informations suivantes</p>
   </header>
-  <form>
+  <form action="addFirstBox.php">
     <div class="input-section email-section">
-      <input class="email" type="text" placeholder="NOM DE VOTRE BOITE" autocomplete="off"/>
+      <input class="email" type="text" placeholder="NOM DE VOTRE BOITE" autocomplete="off" name="boxName" />
       <div class="animated-button"><span class="icon-paper-plane"><i class="fa fa-text-width"></i></span><span class="next-button email"><i class="fa fa-arrow-up"></i></span></div>
     </div>
     <div class="input-section password-section folded">
-      <input class="password" type="text" placeholder="DESCRIPTION DE LA BOITE"/>
+      <input class="password" type="text" placeholder="DESCRIPTION DE LA BOITE" name="boxDescription"/>
       <div class="animated-button"><span class="icon-lock"><i class="fa fa-comments-o"></i></span><span class="next-button password"><i class="fa fa-arrow-up"></i></span></div>
     </div>
     <div class="input-section repeat-password-section folded">
-      <input class="repeat-password" type="text" placeholder="AJOUTEZ VOTRE PREMIER OUTILS"/>
+      <input class="repeat-password" type="text" placeholder="AJOUTEZ VOTRE PREMIER OUTILS" name="boxFirstOutils" />
       <div class="animated-button"><span class="icon-repeat-lock"><i class="fa fa-wrench"></i></span><span class="next-button repeat-password"><i class="fa fa-paper-plane"></i></span></div>
     </div>
     <div class="success"> 
-      <p>BOITE CREER</p>
+      <p>BOITE CREEE</p>
     </div>
   </form>
 </div>
 
-<script type="text/javascript">
-  
 
-$('.email').on("change keyup paste",
-  function(){
-    if($(this).val()){
-      $('.icon-paper-plane').addClass("next");
-    } else {
-      $('.icon-paper-plane').removeClass("next");
-    }
-  }
-);
+<?php }
+else{ ?>
+<center>
+<div class="d-flex justify-content-center col-lg-5 col-sm-12" style="margin-top: 5vh;"><img src="images/toolbox_0.png" width="100%"></div>
+</center>
 
-$('.next-button').hover(
-  function(){
-    $(this).css('cursor', 'pointer');
-  }
-);
-
-$('.next-button.email').click(
-  function(){
-    console.log("Something");
-    $('.email-section').addClass("fold-up");
-    $('.password-section').removeClass("folded");
-  }
-);
-
-$('.password').on("change keyup paste",
-  function(){
-    if($(this).val()){
-      $('.icon-lock').addClass("next");
-    } else {
-      $('.icon-lock').removeClass("next");
-    }
-  }
-);
-
-$('.next-button').hover(
-  function(){
-    $(this).css('cursor', 'pointer');
-  }
-);
-
-$('.next-button.password').click(
-  function(){
-    console.log("Something");
-    $('.password-section').addClass("fold-up");
-    $('.repeat-password-section').removeClass("folded");
-  }
-);
-
-$('.repeat-password').on("change keyup paste",
-  function(){
-    if($(this).val()){
-      $('.icon-repeat-lock').addClass("next");
-    } else {
-      $('.icon-repeat-lock').removeClass("next");
-    }
-  }
-);
-
-$('.next-button.repeat-password').click(
-  function(){
-    console.log("Something");
-    $('.repeat-password-section').addClass("fold-up");
-    $('.success').css("marginTop", 0);
-  }
-);
-
-</script>
-
+<center>
+<div class="col-sm-10 col-lg-8">
+<h1 style="font-family: 'Oswald', sans-serif;"> Bienvenue sur ToolBox ! </h1>
+<p style="font-family: 'Open Sans', sans-serif;"> Connectez vous pour commencer !</p>
+</div>
+</center>
+<?php } ?>
+<script src="js.js"></script>
 </body>
 </html>
