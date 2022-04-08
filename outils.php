@@ -29,7 +29,10 @@
 <?php if(isset($_SESSION['id'])){ ?>
  <div id="sectionOutils">
 
-    <div class="container-lg"> <!-- faire une version avec moins d'info pour téléphone -->
+    <div class="container-lg" style="margin-top: 20px"> <!-- faire une version avec moins d'info pour téléphone -->
+      <span class="table-add float-right mb-3 mr-2">
+        <img src="Images/plus-lg.svg" onclick="ajouterOutil()" aria-hidden="true" style="width:30px;background:#EC81E1  "></i>
+      </span>
      <?php 
        $id_cet=$_SESSION['id'];
        $rep= $bdd->query("SELECT DISTINCT outils.* FROM outils JOIN boite ON boite.id_boite=outils.id_boite JOIN posseder ON posseder.id_boite=boite.id_boite JOIN utilisateur ON posseder.id_utilisateur=utilisateur.id_utilisateur WHERE utilisateur.id_utilisateur=$id_cet" ); // Permet d'afficher le tableau avec les différents outils
@@ -48,6 +51,7 @@
           <th>Etat</th>
           <th>Boite</th>
           <th>Quantitée</th>
+          <th>Photo</th>
 
          </tr>
        </thead>
@@ -63,12 +67,68 @@
            <td><?php echo $outils['description']; ?></td>
            <td><?php echo $outils['etat']; ?></td>
            <td><?php echo $outils['id_boite']; ?></td> 
-           <td><?php echo $outils['quantite']; ?></td>                                        
+           <td><?php echo $outils['quantite']; ?></td>
+           <td>></td>                                        
           </tr>
         <?php } ?>
       </tbody>
     </table>
-  </div>
+ </div>
+ <!--  Onglet ajouter outil -->
+ <div class="col-lg-5 col-sm-12 " id="createOutils" style="margin-right:auto;margin-left:auto;background-color:#FEC4F8; border-radius: 30px;padding:10px; ">
+    
+
+    <div class="form" id="myOutil">
+        <form method="post" action="addOutils.php" class="form-container" >
+            <p class="text-danger"  onclick="closeFormOutils()" > X </p>
+            <h1 style="text-align: center;"> Nouvel Outil </h1>
+            <div class="mb-3">
+             <label for="email"class="form-label"><b>Votre ID</b></label>
+             <input class="form-control"type="text" name="id_utilisateur" value="<?php echo $_SESSION['id']?>" required>
+            </div>
+            <div class="mb-3">
+              <label for="email"class="form-label"><b>fonction</b></label>
+              <input class="form-control"type="text" placeholder="fonction.." name="newfonction" value="" required>
+            </div>
+            <div class="mb-3">
+             <label for="psw"class="form-label"><b>marque</b></label>
+             <input class="form-control"type="text" placeholder="marque.." name="newmarque" value="" required>
+            </div>
+            <div class="mb-3">
+             <label for="psw"class="form-label"><b>type</b></label>
+             <input class="form-control"type="text" placeholder="type.." name="newtype" required>
+            </div>
+            <div class="mb-3">
+             <label for="psw"class="form-label"><b>garantie</b></label>
+             <input class="form-control"type="text" placeholder="garantie.." name="newgarantie" required>
+            </div>
+            <div class="mb-3">
+             <label for="psw"class="form-label"><b>date achat</b></label>
+             <input class="form-control"type="text" placeholder="date achat.." name="newdate" >
+            </div>
+            <div class="mb-3">
+             <label for="psw"class="form-label"><b>description</b></label>
+             <input class="form-control"type="text" placeholder="description.." name="newdescription" required>
+            </div>
+            <div class="mb-3">
+              <label for="psw"class="form-label"><b>etat</b></label>
+              <input class="form-control"type="text" placeholder="etat.." name="newetat" required>
+            </div>
+            <div class="mb-3">
+              <label for="psw"class="form-label"><b>boite</b></label>
+              <input class="form-control"type="text" placeholder="boite.." name="newboite" required>
+            </div>
+            <div class="mb-3">
+              <label for="psw"class="form-label"><b>quantite</b></label>
+              <input class="form-control"type="text" placeholder="quantite.." name="newquantite" >
+            </div>
+            <button type="submit" class="btn btn-success" style="margin-right:auto;margin-left:auto" >Valider</button>
+        </form>
+    </div>
+ </div>
+
+
+
 
 
   
@@ -92,5 +152,8 @@ else{ ?>
 </center>
 <?php } ?>
 <script src="js.js"></script>
+<script src="index.js"></script>
 </body>
 </html>
+
+
