@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mer. 06 avr. 2022 à 19:18
--- Version du serveur :  5.7.31
--- Version de PHP : 7.3.21
+-- Généré le : sam. 16 avr. 2022 à 08:50
+-- Version du serveur : 5.7.36
+-- Version de PHP : 7.4.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -29,18 +29,18 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `boite`;
 CREATE TABLE IF NOT EXISTS `boite` (
-  `id_boite` int(11) NOT NULL,
+  `id_boite` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(255) NOT NULL,
   `description` text NOT NULL,
   PRIMARY KEY (`id_boite`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `boite`
 --
 
 INSERT INTO `boite` (`id_boite`, `nom`, `description`) VALUES
-(1, '', '');
+(1, 'boite1', 'belle');
 
 -- --------------------------------------------------------
 
@@ -59,16 +59,17 @@ CREATE TABLE IF NOT EXISTS `outils` (
   `description` varchar(250) DEFAULT NULL,
   `etat` varchar(25) NOT NULL,
   `id_boite` int(11) NOT NULL,
+  `quantite` int(11) NOT NULL,
   PRIMARY KEY (`id_outils`),
   KEY `RelationBoiteOutils` (`id_boite`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `outils`
 --
 
-INSERT INTO `outils` (`id_outils`, `fonction`, `marque`, `type_outils`, `garantie`, `date_achat`, `description`, `etat`, `id_boite`) VALUES
-(1, 'décapeur', 'bosh', 'electrique', 2, '2022-04-04', 'magnifique', 'neuf', 1);
+INSERT INTO `outils` (`id_outils`, `fonction`, `marque`, `type_outils`, `garantie`, `date_achat`, `description`, `etat`, `id_boite`, `quantite`) VALUES
+(4, 'décapeur', 'bosh', 'visse', 2, '2022-04-06', NULL, 'neuf', 1, 500);
 
 -- --------------------------------------------------------
 
@@ -81,8 +82,16 @@ CREATE TABLE IF NOT EXISTS `posseder` (
   `id_boite` int(11) NOT NULL,
   `id_utilisateur` int(11) NOT NULL,
   PRIMARY KEY (`id_boite`,`id_utilisateur`),
+  UNIQUE KEY `RelationPossederBoite` (`id_boite`),
   KEY `RelationPossederUtilisateur` (`id_utilisateur`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `posseder`
+--
+
+INSERT INTO `posseder` (`id_boite`, `id_utilisateur`) VALUES
+(1, 1);
 
 -- --------------------------------------------------------
 
@@ -119,13 +128,6 @@ CREATE TABLE IF NOT EXISTS `tester` (
   KEY `RelationTesterTest` (`id_test`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Déchargement des données de la table `tester`
---
-
-INSERT INTO `tester` (`id_outils`, `id_test`) VALUES
-(1, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -148,7 +150,7 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
 
 INSERT INTO `utilisateur` (`id_utilisateur`, `nom`, `prenom`, `mdp`, `mail`) VALUES
 (1, 'D\'Hertog', 'Arthur', '$2y$10$pNJNxxxW7nD3vt04KxOh8uEiQURHCQ6I/3FbLusXVUQ50hobNXX6a', 'arthur@dhertog.be'),
-(2, 'Dache', 'Alexandra', 'alexandra', '');
+(2, 'Dache', 'Alexandra', '$2y$10$BtvQeX8EInjmPlYyDSa.beIvoXH5w7Gdxt9fyPFsUGhhT8S.JR94.', 'alexia.dache@gmail.com');
 
 --
 -- Contraintes pour les tables déchargées
