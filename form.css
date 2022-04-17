@@ -1,11 +1,8 @@
 body {
   font-family: "Roboto";
-  
+
 }
-.boiteDesign{
-  opacity: 0%;
-  border: dashed red;
-}
+
 .back {
   background: linear-gradient(120grad, #643986, #98aed5);
   position: absolute;

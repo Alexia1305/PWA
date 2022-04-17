@@ -29,10 +29,13 @@
 <?php if(isset($_SESSION['id'])){ ?>
 
 <center>
-<button class="button-54" role="button" id="buttoncreate" style="margin-top: 32vh;" onclick="create()">Créez votre boîte à outils !</button>
+<button class="button-54" role="button" id="buttoncreate" style="margin-top: 5vh; margin-bottom: 3vh;" onclick="create()">Créez votre boîte à outils !</button>
 </center>
 <style type="text/css">
-
+a:link 
+{ 
+ text-decoration:none; 
+} 
 .button-54 {
   font-family: "Open Sans", sans-serif;
   font-size: 16px;
@@ -68,6 +71,7 @@
   padding-top: 2vh;
   padding-bottom: 2vh;
   margin-bottom: 2vh;
+  box-shadow: 6px 6px 2px 1px lightgrey;
 
 }
 </style>
@@ -112,9 +116,11 @@
 ?>
 <?php while ($donnees = $reponse->fetch()) {
 ?>
+<a href="detailsBoite.php">
 <div class="col-sm-12 boiteDesign">
   <center><h1 style="font-family: 'Oswald', sans-serif;"> Boite <?php echo $donnees['nom']; ?></h1></center>
 </div>
+</a>
 
 
 <?php } ?>

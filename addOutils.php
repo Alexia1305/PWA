@@ -12,6 +12,7 @@
 }
 
 if(isset($_POST['newfonction'])){
+    echo "Test";
 $fonction = htmlspecialchars($_POST['newfonction']);
 $marque = htmlspecialchars($_POST['newmarque']);
 $type_outils = htmlspecialchars($_POST['newtype']);
@@ -31,11 +32,11 @@ $boite = htmlspecialchars($_POST['newboite']);
 $quantite = htmlspecialchars($_POST['newquantite']);
 $id_outils=NULL;
 
+echo "Test";
 
 
 
-
-$req = $bdd->prepare('INSERT INTO outils(id_outils,fonction,marque,type_outils,garantie,date_achat,description,etat,boite,quantite) VALUES(:id_outils,:fonction, :marque, :type_outils, :garantie, :date_achat, :description, :etat, :boite, :quantite)');
+$req = $bdd->prepare('INSERT INTO outils(fonction,marque,type_outils,garantie,date_achat,description,etat,boite,quantite) VALUES(:fonction, :marque, :type_outils, :garantie, :date_achat, :description, :etat, :boite, :quantite)');
 
  
 
