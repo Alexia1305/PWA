@@ -64,7 +64,7 @@
            <td><?php echo $outils['type_outils']; ?></td>  
            <td><?php echo $outils['garantie']; ?></td>
            <td><?php echo $outils['date_achat']; ?></td>
-           <td><?php echo $outils['description']; ?></td>
+           <td><?php echo $outils['description_outils']; ?></td>
            <td><?php echo $outils['etat']; ?></td>
            <td><?php echo $outils['id_boite']; ?></td> 
            <td><?php echo $outils['quantite']; ?></td>
@@ -75,7 +75,7 @@
     </table>
  </div>
  <!--  Onglet ajouter outil -->
- <div class="col-lg-5 col-sm-12 " id="createOutils" style="margin-right:auto;margin-left:auto;background-color:#FEC4F8; border-radius: 30px;padding:10px; ">
+ <div class="col-lg-5 col-sm-12 " id="createOutils" style="margin-right:auto;margin-left:auto;background-color:#FEC4F8; border-radius: 30px;padding:10px;display:none; ">
     
 
     <div class="form" id="myOutil">

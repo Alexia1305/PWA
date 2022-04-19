@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : sam. 16 avr. 2022 à 08:50
+-- Généré le : mar. 19 avr. 2022 à 18:18
 -- Version du serveur : 5.7.36
 -- Version de PHP : 7.4.26
 
@@ -31,7 +31,7 @@ DROP TABLE IF EXISTS `boite`;
 CREATE TABLE IF NOT EXISTS `boite` (
   `id_boite` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(255) NOT NULL,
-  `description` text NOT NULL,
+  `description` text,
   PRIMARY KEY (`id_boite`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
@@ -51,15 +51,15 @@ INSERT INTO `boite` (`id_boite`, `nom`, `description`) VALUES
 DROP TABLE IF EXISTS `outils`;
 CREATE TABLE IF NOT EXISTS `outils` (
   `id_outils` int(11) NOT NULL AUTO_INCREMENT,
-  `fonction` varchar(50) NOT NULL,
-  `marque` varchar(25) NOT NULL,
-  `type_outils` varchar(50) NOT NULL,
-  `garantie` int(11) NOT NULL,
-  `date_achat` date NOT NULL,
-  `description` varchar(250) DEFAULT NULL,
-  `etat` varchar(25) NOT NULL,
-  `id_boite` int(11) NOT NULL,
-  `quantite` int(11) NOT NULL,
+  `fonction` varchar(50) DEFAULT NULL,
+  `marque` varchar(25) DEFAULT NULL,
+  `type_outils` varchar(50) DEFAULT NULL,
+  `garantie` int(11) DEFAULT NULL,
+  `date_achat` date DEFAULT NULL,
+  `description_outils` varchar(250) DEFAULT NULL,
+  `etat` varchar(25) DEFAULT NULL,
+  `id_boite` int(11) DEFAULT NULL,
+  `quantite` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_outils`),
   KEY `RelationBoiteOutils` (`id_boite`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
@@ -68,7 +68,7 @@ CREATE TABLE IF NOT EXISTS `outils` (
 -- Déchargement des données de la table `outils`
 --
 
-INSERT INTO `outils` (`id_outils`, `fonction`, `marque`, `type_outils`, `garantie`, `date_achat`, `description`, `etat`, `id_boite`, `quantite`) VALUES
+INSERT INTO `outils` (`id_outils`, `fonction`, `marque`, `type_outils`, `garantie`, `date_achat`, `description_outils`, `etat`, `id_boite`, `quantite`) VALUES
 (4, 'décapeur', 'bosh', 'visse', 2, '2022-04-06', NULL, 'neuf', 1, 500);
 
 -- --------------------------------------------------------
@@ -102,7 +102,7 @@ INSERT INTO `posseder` (`id_boite`, `id_utilisateur`) VALUES
 DROP TABLE IF EXISTS `test`;
 CREATE TABLE IF NOT EXISTS `test` (
   `id_test` int(11) NOT NULL AUTO_INCREMENT,
-  `date` date NOT NULL,
+  `date` date DEFAULT NULL,
   PRIMARY KEY (`id_test`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 

@@ -6,6 +6,6 @@ function ajouterOutil() {
 	
 
 }
-function closeFormPatient() {
+function closeFormOutils() {
 document.getElementById("createOutils").style.display = "none";	
 }
