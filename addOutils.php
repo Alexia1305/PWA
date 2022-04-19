@@ -7,6 +7,7 @@ if(isset($_SESSION['pseudo'])){
  }
  catch(Exception $e){
              die('Erreur : '.$e->getMessage());
+
  }
 
  if(isset($_POST['newfonction'])){
@@ -24,10 +25,14 @@ if(isset($_SESSION['pseudo'])){
   }else{
   $description= " bo";
   }
+=======
+
 $etat = htmlspecialchars($_POST['newetat']);
 $boite = htmlspecialchars($_POST['newboite']);
 $quantite = htmlspecialchars($_POST['newquantite']);
 $id_outils=NULL;
+
+echo "Test";
 
 
 
@@ -51,6 +56,7 @@ $req->execute(array(
     )); 
 
  } }
+
 
 
 

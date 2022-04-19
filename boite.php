@@ -29,10 +29,13 @@
 <?php if(isset($_SESSION['id'])){ ?>
 
 <center>
-<button class="button-54" role="button" id="buttoncreate" style="margin-top: 32vh;" onclick="create()">Créez votre boîte à outils !</button>
+<button class="button-54" role="button" id="buttoncreate" style="margin-top: 5vh; margin-bottom: 3vh;" onclick="create()">Créez votre boîte à outils !</button>
 </center>
 <style type="text/css">
-
+a:link 
+{ 
+ text-decoration:none; 
+} 
 .button-54 {
   font-family: "Open Sans", sans-serif;
   font-size: 16px;
@@ -61,6 +64,16 @@
     padding: 0.25em 0.75em;
   }
 }
+
+.boiteDesign{
+ 
+  border-radius: 10px 10px 10px 10px;
+  padding-top: 2vh;
+  padding-bottom: 2vh;
+  margin-bottom: 2vh;
+  box-shadow: 6px 6px 2px 1px lightgrey;
+
+}
 </style>
 
 
@@ -73,7 +86,7 @@
     <h1>Boîte à outils</h1>
     <p>Remplissez les informations suivantes</p>
   </header>
-  <form action="addFirstBox.php">
+  <form action="addFirstBox.php" id="formFirstBox" method="post">
     <div class="input-section email-section">
       <input class="email" type="text" placeholder="NOM DE VOTRE BOITE" autocomplete="off" name="boxName" />
       <div class="animated-button"><span class="icon-paper-plane"><i class="fa fa-text-width"></i></span><span class="next-button email"><i class="fa fa-arrow-up"></i></span></div>
@@ -84,13 +97,39 @@
     </div>
     <div class="input-section repeat-password-section folded">
       <input class="repeat-password" type="text" placeholder="AJOUTEZ VOTRE PREMIER OUTILS" name="boxFirstOutils" />
-      <div class="animated-button"><span class="icon-repeat-lock"><i class="fa fa-wrench"></i></span><span class="next-button repeat-password"><i class="fa fa-paper-plane"></i></span></div>
+      <div class="animated-button"><span class="icon-repeat-lock"><i class="fa fa-wrench"></i></span><span class="next-button repeat-password" onclick="validFormFirstBox()"><i class="fa fa-paper-plane"></i></span></div>
     </div>
     <div class="success"> 
       <p>BOITE CREEE</p>
     </div>
   </form>
 </div>
+
+
+
+
+<?php // Condition a mettre ici pour vérifier si il ya des boites
+
+
+
+            $reponse = $bdd->query("SELECT * FROM boite" ); 
+?>
+<?php while ($donnees = $reponse->fetch()) {
+?>
+<a href="detailsBoite.php">
+<div class="col-sm-12 boiteDesign">
+  <center><h1 style="font-family: 'Oswald', sans-serif;"> Boite <?php echo $donnees['nom']; ?></h1></center>
+</div>
+</a>
+
+
+<?php } ?>
+
+
+
+
+
+
 
 
 <?php }
