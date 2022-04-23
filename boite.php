@@ -107,7 +107,7 @@ a:link
 
 
 
-
+<div id="divBoite">
 <?php // Condition a mettre ici pour vérifier si il ya des boites
 
 
@@ -116,15 +116,15 @@ a:link
 ?>
 <?php while ($donnees = $reponse->fetch()) {
 ?>
-<a href="detailsBoite.php">
-<div class="col-sm-12 boiteDesign">
+
+<div class="col-sm-12 boiteDesign" onclick="enregistrerClickBoite(this)" id="<?php echo $donnees['id_boite']; ?>">
   <center><h1 style="font-family: 'Oswald', sans-serif;"> Boite <?php echo $donnees['nom']; ?></h1></center>
 </div>
-</a>
+
 
 
 <?php } ?>
-
+</div>
 
 
 

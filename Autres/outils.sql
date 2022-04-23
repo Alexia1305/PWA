@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : sam. 16 avr. 2022 à 08:50
--- Version du serveur : 5.7.36
--- Version de PHP : 7.4.26
+-- Généré le : sam. 23 avr. 2022 à 10:44
+-- Version du serveur :  5.7.31
+-- Version de PHP : 7.3.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -33,14 +33,16 @@ CREATE TABLE IF NOT EXISTS `boite` (
   `nom` varchar(255) NOT NULL,
   `description` text NOT NULL,
   PRIMARY KEY (`id_boite`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `boite`
 --
 
 INSERT INTO `boite` (`id_boite`, `nom`, `description`) VALUES
-(1, 'boite1', 'belle');
+(1, 'boite1', 'belle'),
+(2, 'gtgtgt', 'gtgtgt'),
+(3, 'Inventaire Stock B', 'Inventaire du stock ');
 
 -- --------------------------------------------------------
 
@@ -52,24 +54,25 @@ DROP TABLE IF EXISTS `outils`;
 CREATE TABLE IF NOT EXISTS `outils` (
   `id_outils` int(11) NOT NULL AUTO_INCREMENT,
   `fonction` varchar(50) NOT NULL,
-  `marque` varchar(25) NOT NULL,
-  `type_outils` varchar(50) NOT NULL,
-  `garantie` int(11) NOT NULL,
-  `date_achat` date NOT NULL,
+  `marque` varchar(25) DEFAULT NULL,
+  `type_outils` varchar(50) DEFAULT NULL,
+  `garantie` int(11) DEFAULT NULL,
+  `date_achat` date DEFAULT NULL,
   `description` varchar(250) DEFAULT NULL,
-  `etat` varchar(25) NOT NULL,
+  `etat` varchar(25) DEFAULT NULL,
   `id_boite` int(11) NOT NULL,
-  `quantite` int(11) NOT NULL,
+  `quantite` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id_outils`),
   KEY `RelationBoiteOutils` (`id_boite`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `outils`
 --
 
 INSERT INTO `outils` (`id_outils`, `fonction`, `marque`, `type_outils`, `garantie`, `date_achat`, `description`, `etat`, `id_boite`, `quantite`) VALUES
-(4, 'décapeur', 'bosh', 'visse', 2, '2022-04-06', NULL, 'neuf', 1, 500);
+(4, 'décapeur', 'bosh', 'visse', 2, '2022-04-06', NULL, 'neuf', 1, 500),
+(5, 'Marteau', NULL, NULL, NULL, NULL, NULL, NULL, 3, 1);
 
 -- --------------------------------------------------------
 
