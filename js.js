@@ -98,7 +98,10 @@ function enregistrerClickBoite(test) {
 
   var stockClick = test.id;
   localStorage.setItem("clickBoite",stockClick);
+  var id_boite = localStorage.getItem("clickBoite");
+
   window.location.href = "detailsBoite.php";
+
 }
 
 function setCookie(name,value,days) {
@@ -122,4 +125,12 @@ function getCookie(name) {
 }
 function eraseCookie(name) {   
     document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+}
+
+function addOutils() {
+  document.getElementById("addOutils").style.display = "block";
+
+}
+function closeAddOutils(){
+  document.getElementById("addOutils").style.display = "none";
 }

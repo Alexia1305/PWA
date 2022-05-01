@@ -5,12 +5,14 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="all" href="<?php echo 'css.css?='.time(); ?>"/>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
+   
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Oswald:wght@700&display=swap" rel="stylesheet"> 
-<link href="css.css" rel="stylesheet"> 
+
 	<title>ToolBox</title>
 </head>
 <body>
@@ -21,35 +23,30 @@
 
 <?php include("navbar.php");  ?>
 <?php include("dbconnect.php");  ?>
-<style>
-  .boiteStyle{
-    border: 1px grey solid; border-radius: 1em; margin-top: 2vh; box-shadow: 6px 6px 2px 1px lightgrey;
-background: rgb(2,0,36);
-background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(33,33,85,1) 35%, rgba(0,0,0,1) 100%);
-    color: white;
-    font-family: 'Oswald', sans-serif;
-  }
-</style>
+
 <script>
   var id_boite = localStorage.getItem("clickBoite");
+  
   setCookie("id_boite", id_boite,7);
-window.onload = function() {
+  temp = getCookie("id_boite");
+  alert(temp);
+    window.onload = function() {
     if(!window.location.hash) {
         window.location = window.location + '#loaded';
         window.location.reload();
+        }
     }
-}
 </script>
 
 <?php 
       $id_boite = htmlentities($_COOKIE['id_boite'], 7, 'UTF-8');
-
+     echo $id_boite;
 
       $reponse = $bdd->query("SELECT * FROM boite WHERE id_boite =  '$id_boite'"); 
       $donnees = $reponse->fetch()
 ?>
 
-
+<div class="iconAddOutils" onclick="addOutils()"><img src="images/wrench.png" width="30vh"></div>
 <center><h1 id="titreBoite" class="boiteStyle" ><?php echo strtoupper ( $donnees['nom'] );  ?></h1></center>
 
 <?php 
@@ -64,11 +61,62 @@ window.onload = function() {
 <a href="detailsOutils.php"><p style="color: black;"> <?php echo $donnees['fonction'];  ?> <p></a>
 <?php } ?>
 
-<script>
+<!-- Menu ajout outils -->
+<div class="container" id="addOutils" style="display:none">
 
-  
- 
+    <div class="row ">
 
-</script>
+        <div class="col-lg-7 mx-auto">
+            <div class="card mt-2 mx-auto p-4 bg-light">
+                     <p style="display: flex; justify-content: right; font-weight: bold;" onclick="closeAddOutils()"> X</p> 
+                <div class="card-body bg-light">
+                    <div class="container">
+                        <form id="contact-form" role="form">
+                            <div class="controls">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group"> <label for="form_name">Nom de l'outils *</label> <input id="nomOutils" type="text" name="name" class="form-control" placeholder="Entrez le nom de votre outils *" required="required" data-error="Firstname is required."> </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group"> <label for="form_lastname">Marque</label> <input id="form_lastname" type="text" name="surname" class="form-control" placeholder="Entrez la marque de votre outils" data-error="Lastname is required."> </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group"> <label for="form_email">Garantie</label> <input id="form_email" type="email" name="email" class="form-control" placeholder="Date de validitée de la garentie" data-error="Valid email is required."> </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group"> <label for="form_need">Etat</label> <select id="form_need" name="need" class="form-control" required="required" data-error="Please specify your need.">
+                                                <option>Neuf</option>
+                                                <option>Bon état</option>
+                                                <option>Mauvais état</option>
+                                                <option>Non fonctionel</option>
+                                             
+                                            </select> </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group"> <label for="form_email">Date d'achat</label> <input id="form_email" type="email" name="email" class="form-control" placeholder="Entrez la date d'achat ici" data-error="Valid email is required."> </div>
+                                    </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group"> <label for="form_email">Quantitée</label> <input id="form_email" type="email" name="email" class="form-control" placeholder="Quantitée "  data-error="Valid email is required."> </div>
+                                    </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group"> <label for="form_message">Description complémentaire</label> <textarea id="form_message" name="message" class="form-control" placeholder="Entrez la description ici" rows="4" data-error="Please, leave us a message."></textarea> </div>
+                                    </div>
+                                    <div class="col-md-12"> <input type="submit" class="btn btn-success btn-send pt-2 btn-block " value="Send Message"> </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div> <!-- /.8 -->
+        </div> <!-- /.row-->
+    </div>
+</div>
+
 </body>
 </html>
