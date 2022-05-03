@@ -21,7 +21,28 @@
 
 <?php include("navbar.php");  ?>
 <?php include("dbconnect.php");  ?>
+<script type="text/javascript">
+	
+</script>
+<?php 
+      $id_boite = htmlentities($_COOKIE['id_outils'], 7, 'UTF-8');
 
+
+      $reponse = $bdd->query("SELECT * FROM outils WHERE id_outils='$id_boite'"); 
+      while ($donnees = $reponse->fetch()) {
+?>
+
+<!-- Boucle ici pour chaque outils-->
+<center>
+<p style="color: black;" onclick="affDetailsOutils(this)"><b>Nom : </b><?php echo $donnees['fonction'];  ?> </p>
+<p style="color: black;" onclick="affDetailsOutils(this)"><b>Marque : </b><?php echo $donnees['marque'];  ?> </p>
+<p style="color: black;" onclick="affDetailsOutils(this)"><b>Garantie : </b><?php echo $donnees['garantie'];  ?> </p>
+<p style="color: black;" onclick="affDetailsOutils(this)"><b>Date d'achat :</b> <?php echo $donnees['date_achat'];  ?> </p>
+<p style="color: black;" onclick="affDetailsOutils(this)"><b>Description :</b> <?php echo $donnees['description'];  ?> </p>
+<p style="color: black;" onclick="affDetailsOutils(this)"><b>Etat :</b> <?php echo $donnees['etat'];  ?> </p>
+<p style="color: black;" onclick="affDetailsOutils(this)"><b>Quantitée : </b><?php echo $donnees['quantite'];  ?> </p>
+	</center
+<?php } ?>
 
 </body>
 </html>

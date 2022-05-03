@@ -29,7 +29,7 @@
   
   setCookie("id_boite", id_boite,7);
   
-  document.getElementById("hiddenInput").value = id_boite
+  
     window.onload = function() {
     if(!window.location.hash) {
         window.location = window.location + '#loaded';
@@ -40,7 +40,7 @@
 
 <?php 
       $id_boite = htmlentities($_COOKIE['id_boite'], 7, 'UTF-8');
-     echo $id_boite;
+     
 
       $reponse = $bdd->query("SELECT * FROM boite WHERE id_boite =  '$id_boite'"); 
       $donnees = $reponse->fetch()
@@ -58,7 +58,7 @@
 ?>
 
 <!-- Boucle ici pour chaque outils-->
-<a href="detailsOutils.php"><p style="color: black;"> <?php echo $donnees['fonction'];  ?> <p></a>
+<p style="color: black;" onclick="affDetailsOutils(this)" id="<?php echo $donnees['id_outils'];  ?>"><b>Outils :</b> <?php echo $donnees['fonction'];  ?> <p>
 <?php } ?>
 
 <!-- Menu ajout outils -->

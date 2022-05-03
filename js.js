@@ -134,3 +134,10 @@ function addOutils() {
 function closeAddOutils(){
   document.getElementById("addOutils").style.display = "none";
 }
+
+function affDetailsOutils(temp){
+  
+  var stockClick = temp.id;
+  setCookie("id_outils", stockClick,7);
+  window.location.href = "detailsOutils.php";
+}
