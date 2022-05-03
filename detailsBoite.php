@@ -121,7 +121,7 @@
 <script type="text/javascript">
     temp = getCookie("id_boite");
     document.getElementById("hiddenInput").value = temp;
-    alert(temp);
+
 
 </script>
 </body>
