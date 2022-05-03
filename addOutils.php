@@ -1,7 +1,7 @@
 <?php session_start() ?>
 <?php
-
-
+if(isset($_SESSION['id'])){
+header('Location: detailsBoite.php'); 
  try
 {
                 $bdd = new PDO('mysql:host=localhost;dbname=outils;charset=utf8', 'root', '');
@@ -11,36 +11,40 @@
              die('Erreur : '.$e->getMessage());
 }
 
-if(isset($_POST['newfonction'])){
-    echo "Test";
-$fonction = htmlspecialchars($_POST['newfonction']);
-$marque = htmlspecialchars($_POST['newmarque']);
-$type_outils = htmlspecialchars($_POST['newtype']);
-$garantie = htmlspecialchars($_POST['newgarantie']);
-if($_POST['newdate'] !== ""){
-$date_achat = htmlspecialchars($_POST['newdate']);
-}else{
-$date_achat = date('d-m-y');;
-}
-if($_POST['newdescription'] !== ""){
-$description= htmlspecialchars($_POST['newdescription']);
-}else{
-$description= " bo";
-}
-$etat = htmlspecialchars($_POST['newetat']);
-$boite = htmlspecialchars($_POST['newboite']);
-$quantite = htmlspecialchars($_POST['newquantite']);
-$id_outils=NULL;
 
-echo "Test";
+if(isset($_POST['name'])){
+    
+$fonction = htmlspecialchars($_POST['name']);
+$marque = htmlspecialchars($_POST['marque']);
+$garantie = htmlspecialchars($_POST['garantie']);
+$date_achat = htmlspecialchars($_POST['dateAchat']);
+$description = htmlspecialchars($_POST['description']);
+$etat = htmlspecialchars($_POST['etat']);
+$id_boite = htmlspecialchars($_POST['id_boite']);
+$quantite = htmlspecialchars($_POST['quantite']);
 
 
 
-$req = $bdd->prepare('INSERT INTO outils(fonction,marque,type_outils,garantie,date_achat,description,etat,boite,quantite) VALUES(:fonction, :marque, :type_outils, :garantie, :date_achat, :description, :etat, :boite, :quantite)');
+
+
+$req = $bdd->prepare('INSERT INTO outils(fonction, marque, garantie, date_achat, description, etat, id_boite, quantite ) VALUES(:fonction, :marque, :garantie, :date_achat, :description, :etat, :id_boite, :quantite)');
+
+$req->execute(array(
+    'fonction' => $fonction,
+    'marque' => $marque,
+    'garantie' => $garantie,
+    'date_achat' => $date_achat,
+    'description' => $description,
+    'etat' => $etat,
+    'id_boite' => $id_boite,
+    'quantite' => $quantite
+    )); 
+
 
  
 
-} 
+} }
+
 
 
  ?>

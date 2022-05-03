@@ -28,8 +28,8 @@
   var id_boite = localStorage.getItem("clickBoite");
   
   setCookie("id_boite", id_boite,7);
-  temp = getCookie("id_boite");
-  alert(temp);
+  
+  document.getElementById("hiddenInput").value = id_boite
     window.onload = function() {
     if(!window.location.hash) {
         window.location = window.location + '#loaded';
@@ -71,22 +71,22 @@
                      <p style="display: flex; justify-content: right; font-weight: bold;" onclick="closeAddOutils()"> X</p> 
                 <div class="card-body bg-light">
                     <div class="container">
-                        <form id="contact-form" role="form">
+                        <form id="contact-form" role="form" action="addOutils.php" method="post">
                             <div class="controls">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group"> <label for="form_name">Nom de l'outils *</label> <input id="nomOutils" type="text" name="name" class="form-control" placeholder="Entrez le nom de votre outils *" required="required" data-error="Firstname is required."> </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="form-group"> <label for="form_lastname">Marque</label> <input id="form_lastname" type="text" name="surname" class="form-control" placeholder="Entrez la marque de votre outils" data-error="Lastname is required."> </div>
+                                        <div class="form-group"> <label for="form_lastname">Marque</label> <input id="form_lastname" type="text" name="marque" class="form-control" placeholder="Entrez la marque de votre outils" data-error="Lastname is required."> </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <div class="form-group"> <label for="form_email">Garantie</label> <input id="form_email" type="email" name="email" class="form-control" placeholder="Date de validitée de la garentie" data-error="Valid email is required."> </div>
+                                        <div class="form-group"> <label for="form_email">Garantie</label> <input id="form_email" type="number" name="garantie" class="form-control" placeholder="Date de validitée de la garentie" data-error="Entrez une date valide"> </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="form-group"> <label for="form_need">Etat</label> <select id="form_need" name="need" class="form-control" required="required" data-error="Please specify your need.">
+                                        <div class="form-group"> <label for="form_need">Etat</label> <select id="form_need" name="etat" class="form-control" required="required" data-error="Please specify your need.">
                                                 <option>Neuf</option>
                                                 <option>Bon état</option>
                                                 <option>Mauvais état</option>
@@ -97,16 +97,17 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <div class="form-group"> <label for="form_email">Date d'achat</label> <input id="form_email" type="email" name="email" class="form-control" placeholder="Entrez la date d'achat ici" data-error="Valid email is required."> </div>
+                                        <div class="form-group"> <label for="form_email">Date d'achat</label> <input id="form_email" type="date" name="dateAchat" class="form-control" placeholder="Entrez la date d'achat ici" data-error="Rentrez une date valide"> </div>
                                     </div>
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <div class="form-group"> <label for="form_email">Quantitée</label> <input id="form_email" type="email" name="email" class="form-control" placeholder="Quantitée "  data-error="Valid email is required."> </div>
+                                        <div class="form-group"> <label for="form_email">Quantitée</label> <input id="form_email" type="number" name="quantite" class="form-control" placeholder="Quantitée "  data-error="Entrez un nombre valide."> </div>
                                     </div>
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <div class="form-group"> <label for="form_message">Description complémentaire</label> <textarea id="form_message" name="message" class="form-control" placeholder="Entrez la description ici" rows="4" data-error="Please, leave us a message."></textarea> </div>
+                                        <div class="form-group"> <label for="form_message">Description complémentaire</label> <textarea id="form_message" name="description" class="form-control" placeholder="Entrez la description ici" rows="4" data-error="Please, leave us a message."></textarea> </div>
                                     </div>
+                                    <input id="hiddenInput" type="hidden" name="id_boite" class="form-control" placeholder="Quantitée " value="1">
                                     <div class="col-md-12"> <input type="submit" class="btn btn-success btn-send pt-2 btn-block " value="Send Message"> </div>
                                 </div>
                             </div>
@@ -117,6 +118,11 @@
         </div> <!-- /.row-->
     </div>
 </div>
+<script type="text/javascript">
+    temp = getCookie("id_boite");
+    document.getElementById("hiddenInput").value = temp;
+    alert(temp);
 
+</script>
 </body>
 </html>
