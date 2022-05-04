@@ -41,6 +41,8 @@
 <p style="color: black;" onclick="affDetailsOutils(this)"><b>Description :</b> <?php echo $donnees['description'];  ?> </p>
 <p style="color: black;" onclick="affDetailsOutils(this)"><b>Etat :</b> <?php echo $donnees['etat'];  ?> </p>
 <p style="color: black;" onclick="affDetailsOutils(this)"><b>Quantitée : </b><?php echo $donnees['quantite'];  ?> </p>
+<p style="color: black;" onclick="affDetailsOutils(this)"><b>Quantitée : </b><?php echo $donnees['photo'];  ?> </p>
+<img src=<?php echo $donnees['photo'];  ?> style="">
 	</center
 <?php } ?>
 

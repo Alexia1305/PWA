@@ -31,7 +31,7 @@
 
     <div class="container-lg" style="margin-top: 20px"> <!-- faire une version avec moins d'info pour téléphone -->
       <span class="table-add float-right mb-3 mr-2">
-        <img src="Images/plus-lg.svg" onclick="ajouterOutil()" aria-hidden="true" style="width:30px;background:#EC81E1  "></i>
+        <div class="iconAddOutils" onclick="addOutils()"><img src="images/wrench.png" width="30vh"></div>
       </span>
      <?php 
        $id_cet=$_SESSION['id'];
@@ -41,91 +41,90 @@
      <table id="editableTable" class="table table-bordered  table-striped">
        <thead>
          <tr>
-          <th>Id</th>
-          <th>Fonction</th>
+          
+          <th>Nom</th>
           <th>Marque</th>
-          <th>Type</th>
-          <th>Garantie</th>
-          <th>Date Achat</th>
-          <th>Description</th>
           <th>Etat</th>
           <th>Boite</th>
           <th>Quantitée</th>
-          <th>Photo</th>
+        
 
          </tr>
        </thead>
        <tbody>
          <?php while( $outils = $rep->fetch() ) { ?>
-          <tr id="<?php echo $outils ['id_outils']; ?>">
-           <td><?php echo $outils['id_outils']; ?></td>
+          <tr onclick="affDetailsOutils(this)" id="<?php echo $outils ['id_outils']; ?>">
            <td><?php echo $outils ['fonction']; ?></td>
            <td><?php echo $outils ['marque']; ?></td>
-           <td><?php echo $outils['type_outils']; ?></td>  
-           <td><?php echo $outils['garantie']; ?></td>
-           <td><?php echo $outils['date_achat']; ?></td>
-           <td><?php echo $outils['description']; ?></td>
            <td><?php echo $outils['etat']; ?></td>
            <td><?php echo $outils['id_boite']; ?></td> 
-           <td><?php echo $outils['quantite']; ?></td>
-           <td>></td>                                        
+           <td><?php echo $outils['quantite']; ?></td>                                       
           </tr>
         <?php } ?>
       </tbody>
     </table>
  </div>
- <!--  Onglet ajouter outil -->
- <div class="col-lg-5 col-sm-12 " id="createOutils" style="margin-right:auto;margin-left:auto;background-color:#FEC4F8; border-radius: 30px;padding:10px; ">
-    
 
-    <div class="form" id="myOutil">
-        <form method="post" action="addOutils.php" class="form-container" >
-            <p class="text-danger"  onclick="closeFormOutils()" > X </p>
-            <h1 style="text-align: center;"> Nouvel Outil </h1>
-            <div class="mb-3">
-             <label for="email"class="form-label"><b>Votre ID</b></label>
-             <input class="form-control"type="text" name="id_utilisateur" value="<?php echo $_SESSION['id']?>" required>
+ <!-- Menu ajout outils -->
+<div class="container" id="addOutils" style="display:none">
+
+<div class="row ">
+
+    <div class="col-lg-7 mx-auto">
+        <div class="card mt-2 mx-auto p-4 bg-light">
+                 <p style="display: flex; justify-content: right; font-weight: bold;" onclick="closeAddOutils()"> X</p> 
+            <div class="card-body bg-light">
+                <div class="container">
+                    <form id="contact-form" role="form" action="addOutils.php" method="post">
+                        <div class="controls">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group"> <label for="form_name">Nom de l'outils *</label> <input id="nomOutils" type="text" name="name" class="form-control" placeholder="Entrez le nom de votre outils *" required="required" data-error="Firstname is required."> </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group"> <label for="form_lastname">Marque</label> <input id="form_lastname" type="text" name="marque" class="form-control" placeholder="Entrez la marque de votre outils" data-error="Lastname is required."> </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group"> <label for="form_email">Garantie</label> <input id="form_email" type="number" name="garantie" class="form-control" placeholder="Date de validitée de la garentie" data-error="Entrez une date valide"> </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group"> <label for="form_need">Etat</label> <select id="form_need" name="etat" class="form-control" required="required" data-error="Please specify your need.">
+                                            <option>Neuf</option>
+                                            <option>Bon état</option>
+                                            <option>Mauvais état</option>
+                                            <option>Non fonctionel</option>
+                                         
+                                        </select> </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group"> <label for="form_email">Date d'achat</label> <input id="form_email" type="date" name="dateAchat" class="form-control" placeholder="Entrez la date d'achat ici" data-error="Rentrez une date valide"> </div>
+                                </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group"> <label for="form_email">Quantitée</label> <input id="form_email" type="number" name="quantite" class="form-control" placeholder="Quantitée "  data-error="Entrez un nombre valide."> </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group"> <label for="form_email">Photo</label> <input id="form_email" type="text" name="photo" class="form-control" placeholder="URL photo "  data-error="Entrez une url valide."> </div>
+                                </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group"> <label for="form_message">Description complémentaire</label> <textarea id="form_message" name="description" class="form-control" placeholder="Entrez la description ici" rows="4" data-error="Please, leave us a message."></textarea> </div>
+                                </div>
+                                <input id="hiddenInput" type="hidden" name="id_boite" class="form-control" placeholder="Quantitée " value="1">
+                                <div class="col-md-12"> <input type="submit" class="btn btn-success btn-send pt-2 btn-block " value="Send Message"> </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
-            <div class="mb-3">
-              <label for="email"class="form-label"><b>fonction</b></label>
-              <input class="form-control"type="text" placeholder="fonction.." name="newfonction" value="" required>
-            </div>
-            <div class="mb-3">
-             <label for="psw"class="form-label"><b>marque</b></label>
-             <input class="form-control"type="text" placeholder="marque.." name="newmarque" value="" required>
-            </div>
-            <div class="mb-3">
-             <label for="psw"class="form-label"><b>type</b></label>
-             <input class="form-control"type="text" placeholder="type.." name="newtype" required>
-            </div>
-            <div class="mb-3">
-             <label for="psw"class="form-label"><b>garantie</b></label>
-             <input class="form-control"type="text" placeholder="garantie.." name="newgarantie" required>
-            </div>
-            <div class="mb-3">
-             <label for="psw"class="form-label"><b>date achat</b></label>
-             <input class="form-control"type="text" placeholder="date achat.." name="newdate" >
-            </div>
-            <div class="mb-3">
-             <label for="psw"class="form-label"><b>description</b></label>
-             <input class="form-control"type="text" placeholder="description.." name="newdescription" required>
-            </div>
-            <div class="mb-3">
-              <label for="psw"class="form-label"><b>etat</b></label>
-              <input class="form-control"type="text" placeholder="etat.." name="newetat" required>
-            </div>
-            <div class="mb-3">
-              <label for="psw"class="form-label"><b>boite</b></label>
-              <input class="form-control"type="text" placeholder="boite.." name="newboite" required>
-            </div>
-            <div class="mb-3">
-              <label for="psw"class="form-label"><b>quantite</b></label>
-              <input class="form-control"type="text" placeholder="quantite.." name="newquantite" >
-            </div>
-            <button type="submit" class="btn btn-success" style="margin-right:auto;margin-left:auto" >Valider</button>
-        </form>
-    </div>
- </div>
+        </div> <!-- /.8 -->
+    </div> <!-- /.row-->
+</div>
+</div>
 
 
 

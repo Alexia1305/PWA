@@ -22,12 +22,13 @@ $description = htmlspecialchars($_POST['description']);
 $etat = htmlspecialchars($_POST['etat']);
 $id_boite = htmlspecialchars($_POST['id_boite']);
 $quantite = htmlspecialchars($_POST['quantite']);
+$photo = htmlspecialchars($_POST['photo']);
 
 
 
 
 
-$req = $bdd->prepare('INSERT INTO outils(fonction, marque, garantie, date_achat, description, etat, id_boite, quantite ) VALUES(:fonction, :marque, :garantie, :date_achat, :description, :etat, :id_boite, :quantite)');
+$req = $bdd->prepare('INSERT INTO outils(fonction, marque, garantie, date_achat, description, etat, id_boite, quantite,photo ) VALUES(:fonction, :marque, :garantie, :date_achat, :description, :etat, :id_boite, :quantite,:photo)');
 
 $req->execute(array(
     'fonction' => $fonction,
@@ -37,7 +38,8 @@ $req->execute(array(
     'description' => $description,
     'etat' => $etat,
     'id_boite' => $id_boite,
-    'quantite' => $quantite
+    'quantite' => $quantite,
+    'photo' => $photo
     )); 
 
 
