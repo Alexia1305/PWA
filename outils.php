@@ -56,6 +56,13 @@
           <tr onclick="affDetailsOutils(this)" id="<?php echo $outils ['id_outils']; ?>">
            <td><?php echo $outils ['fonction']; ?></td>
            <td><?php echo $outils ['marque']; ?></td>
+<<<<<<< HEAD
+=======
+           <td><?php echo $outils['type_outils']; ?></td>  
+           <td><?php echo $outils['garantie']; ?></td>
+           <td><?php echo $outils['date_achat']; ?></td>
+           <td><?php echo $outils['description_outils']; ?></td>
+>>>>>>> 978c41dc374dd3e3bcba53987e74e2b0962c355b
            <td><?php echo $outils['etat']; ?></td>
            <td><?php echo $outils['id_boite']; ?></td> 
            <td><?php echo $outils['quantite']; ?></td>                                       
@@ -64,6 +71,12 @@
       </tbody>
     </table>
  </div>
+<<<<<<< HEAD
+=======
+ <!--  Onglet ajouter outil -->
+ <div class="col-lg-5 col-sm-12 " id="createOutils" style="margin-right:auto;margin-left:auto;background-color:#FEC4F8; border-radius: 30px;padding:10px;display:none; ">
+    
+>>>>>>> 978c41dc374dd3e3bcba53987e74e2b0962c355b
 
  <!-- Menu ajout outils -->
 <div class="container" id="addOutils" style="display:none">
