@@ -134,10 +134,19 @@ function addOutils() {
 function closeAddOutils(){
   document.getElementById("addOutils").style.display = "none";
 }
+function closeeditOutils(){
+  document.getElementById("editOutils").style.display = "none";
+}
+function editOutils(){
 
+  document.getElementById("editOutils").style.display = "block";
+
+  //document.getElementById("nomOutils").value = "test";
+}
 function affDetailsOutils(temp){
   
   var stockClick = temp.id;
   setCookie("id_outils", stockClick,7);
   window.location.href = "detailsOutils.php";
 }
+

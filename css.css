@@ -58,3 +58,10 @@ margin-right: 4vh;
 margin-top: 2vh;
 
 }
+#detailsDesOutils{
+    margin-top: 10vh;
+}
+#detailOutilText{
+    color: black;
+    font-family: 'Open Sans', sans-serif;
+}
