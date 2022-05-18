@@ -3,15 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
-<<<<<<< HEAD
--- Généré le : sam. 23 avr. 2022 à 10:44
+-- Généré le : mer. 18 mai 2022 à 19:29
 -- Version du serveur :  5.7.31
 -- Version de PHP : 7.3.21
-=======
--- Généré le : mar. 19 avr. 2022 à 18:18
--- Version du serveur : 5.7.36
--- Version de PHP : 7.4.26
->>>>>>> 978c41dc374dd3e3bcba53987e74e2b0962c355b
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -37,7 +31,7 @@ DROP TABLE IF EXISTS `boite`;
 CREATE TABLE IF NOT EXISTS `boite` (
   `id_boite` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(255) NOT NULL,
-  `description` text,
+  `description` text NOT NULL,
   PRIMARY KEY (`id_boite`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
@@ -59,42 +53,30 @@ INSERT INTO `boite` (`id_boite`, `nom`, `description`) VALUES
 DROP TABLE IF EXISTS `outils`;
 CREATE TABLE IF NOT EXISTS `outils` (
   `id_outils` int(11) NOT NULL AUTO_INCREMENT,
-<<<<<<< HEAD
   `fonction` varchar(50) NOT NULL,
-=======
-  `fonction` varchar(50) DEFAULT NULL,
->>>>>>> 978c41dc374dd3e3bcba53987e74e2b0962c355b
   `marque` varchar(25) DEFAULT NULL,
-  `type_outils` varchar(50) DEFAULT NULL,
   `garantie` int(11) DEFAULT NULL,
   `date_achat` date DEFAULT NULL,
-<<<<<<< HEAD
   `description` varchar(250) DEFAULT NULL,
   `etat` varchar(25) DEFAULT NULL,
   `id_boite` int(11) NOT NULL,
   `quantite` int(11) NOT NULL DEFAULT '1',
-=======
-  `description_outils` varchar(250) DEFAULT NULL,
-  `etat` varchar(25) DEFAULT NULL,
-  `id_boite` int(11) DEFAULT NULL,
-  `quantite` int(11) DEFAULT NULL,
->>>>>>> 978c41dc374dd3e3bcba53987e74e2b0962c355b
+  `photo` varchar(250) DEFAULT NULL,
   PRIMARY KEY (`id_outils`),
   KEY `RelationBoiteOutils` (`id_boite`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `outils`
 --
 
-<<<<<<< HEAD
-INSERT INTO `outils` (`id_outils`, `fonction`, `marque`, `type_outils`, `garantie`, `date_achat`, `description`, `etat`, `id_boite`, `quantite`) VALUES
-(4, 'décapeur', 'bosh', 'visse', 2, '2022-04-06', NULL, 'neuf', 1, 500),
-(5, 'Marteau', NULL, NULL, NULL, NULL, NULL, NULL, 3, 1);
-=======
-INSERT INTO `outils` (`id_outils`, `fonction`, `marque`, `type_outils`, `garantie`, `date_achat`, `description_outils`, `etat`, `id_boite`, `quantite`) VALUES
-(4, 'décapeur', 'bosh', 'visse', 2, '2022-04-06', NULL, 'neuf', 1, 500);
->>>>>>> 978c41dc374dd3e3bcba53987e74e2b0962c355b
+INSERT INTO `outils` (`id_outils`, `fonction`, `marque`, `garantie`, `date_achat`, `description`, `etat`, `id_boite`, `quantite`, `photo`) VALUES
+(4, 'Décapeur', 'Boshe', 2, '2022-04-06', 'test', 'Non fonctionel', 1, 500, ''),
+(5, 'Marteau', NULL, NULL, NULL, NULL, NULL, 3, 1, NULL),
+(6, 'Arthur', 'D\'hertog', 0, '2022-05-04', '', 'Non fonctionel', 1, 1, 'https://media-exp1.licdn.com/dms/image/C4E03AQG1NbWLKmEO7w/profile-displayphoto-shrink_800_800/0/1604315189656?e=1657152000&amp;v=beta&amp;t=NPxNl7F8U32P1apSgTLGfpBHerC19Ytp9eO__J8yBRY'),
+(7, 'Arthur', 'D\'hertog', 0, '2022-05-04', 'bof', 'Non fonctionel', 1, 0, 'https://media-exp1.licdn.com/dms/image/C4E03AQG1NbWLKmEO7w/profile-displayphoto-shrink_100_100/0/1604315189656?e=1655337600&amp;v=beta&amp;t=q9aETAR0k3_X8iFiImhmXDsC155UZU2EHCwakoJnmIo'),
+(8, 'Arthur', 'D\'hertog', -1, '2022-05-04', 'un peu prétentieux \r\nun peu intelligent \r\nun peu bo ', 'Mauvais état', 1, 1, 'https://www.troiscouleurs.fr/wp-content/uploads/2017/06/miguel-vasquez-miguel-vasquez-bestfriends12-465-581-int.jpg'),
+(9, 'Testo', 'Testo', 12, '2022-05-03', 'Magnifique', 'Non fonctionel', 1, 3, '');
 
 -- --------------------------------------------------------
 
@@ -127,7 +109,7 @@ INSERT INTO `posseder` (`id_boite`, `id_utilisateur`) VALUES
 DROP TABLE IF EXISTS `test`;
 CREATE TABLE IF NOT EXISTS `test` (
   `id_test` int(11) NOT NULL AUTO_INCREMENT,
-  `date` date DEFAULT NULL,
+  `date` date NOT NULL,
   PRIMARY KEY (`id_test`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 

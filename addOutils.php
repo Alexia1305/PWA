@@ -25,10 +25,30 @@ $quantite = htmlspecialchars($_POST['quantite']);
 $photo = htmlspecialchars($_POST['photo']);
 
 
+// Testons si le fichier a bien été envoyé et s'il n'y a pas d'erreur
+if (isset($_FILES['fichier']) && $_FILES['fichier']['error'] == 0)
+{
+        // Testons si le fichier n'est pas trop gros
+        if ($_FILES['fichier']['size'] <= 1000000)
+        {
+                // Testons si l'extension est autorisée
+                $fileInfo = pathinfo($_FILES['fichier']['name']);
+                $extension = $fileInfo['extension'];
+                $allowedExtensions = ['jpg', 'jpeg', 'gif', 'png'];
+                if (in_array($extension, $allowedExtensions))
+                {
+                        // On peut valider le fichier et le stocker définitivement
+                        move_uploaded_file($_FILES['fichier']['tmp_name'], 'uploads/' . basename($_FILES['fichier']['name']));
+						$fichier = 'uploads/' . basename($_FILES['fichier']['name']); // on stocke le chemin 
+                        echo "L'envoi a bien été effectué !";
+                }
+        }
+}
 
 
 
-$req = $bdd->prepare('INSERT INTO outils(fonction, marque, garantie, date_achat, description, etat, id_boite, quantite,photo ) VALUES(:fonction, :marque, :garantie, :date_achat, :description, :etat, :id_boite, :quantite,:photo)');
+
+$req = $bdd->prepare('INSERT INTO outils(fonction, marque, garantie, date_achat, description, etat, id_boite, quantite,photo,fichier) VALUES(:fonction, :marque, :garantie, :date_achat, :description, :etat, :id_boite, :quantite,:photo,:fichier)');
 
 $req->execute(array(
     'fonction' => $fonction,
@@ -39,7 +59,8 @@ $req->execute(array(
     'etat' => $etat,
     'id_boite' => $id_boite,
     'quantite' => $quantite,
-    'photo' => $photo
+    'photo' => $photo,
+	'fichier' => $fichier
     )); 
 
 

@@ -31,7 +31,7 @@
 <?php include("menuAjoutOutils.php");  ?>
  <div id="sectionOutils" >
 </div>
-    <div class="container-lg" style="margin-top: 20px"> <!-- faire une version avec moins d'info pour téléphone -->
+    <div class="container-fluid"  style="margin-top: 20px"> <!-- faire une version avec moins d'info pour téléphone -->
       <span class="table-add float-right mb-3 mr-2">
         <div class="iconAddOutils" onclick="addOutils()"><img src="images/wrench.png" width="30vh"></div>
       </span>
@@ -40,8 +40,9 @@
        $rep= $bdd->query("SELECT DISTINCT outils.* FROM outils JOIN boite ON boite.id_boite=outils.id_boite JOIN posseder ON posseder.id_boite=boite.id_boite JOIN utilisateur ON posseder.id_utilisateur=utilisateur.id_utilisateur WHERE utilisateur.id_utilisateur=$id_cet" ); // Permet d'afficher le tableau avec les différents outils
       
      ?>
-     <table id="editableTable" class="table table-bordered  table-striped">
-       <thead>
+	 <div class="table-responsive"> 
+     <table id="editableTable" class="table table-bordered "  table-striped"style="margin:20px "> 
+       <thead> 
          <tr>
           
           <th>Nom</th>
@@ -65,11 +66,14 @@
         <?php } ?>
       </tbody>
     </table>
+	<div/>
  </div>
+ 
 </div>
 
 
 <?php }
+
 else{ ?>
 <center>
 <div class="d-flex justify-content-center col-lg-5 col-sm-12" style="margin-top: 5vh;"><img src="images/toolbox_0.png" width="100%"></div>
