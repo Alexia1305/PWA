@@ -8,7 +8,7 @@
                  <p style="display: flex; justify-content: right; font-weight: bold;" onclick="closeAddOutils()"> X</p> 
             <div class="card-body bg-light">
                 <div class="container">
-                    <form id="contact-form" role="form" action="addOutils.php" method="post">
+                    <form id="contact-form" enctype="multipart/form-data"role="form" action="addOutils.php" method="post" >
                         <div class="controls">
                             <div class="row">
                                 <div class="col-md-6">
@@ -47,6 +47,13 @@
                                     <div class="form-group"> <label for="form_email">Photo</label> <input id="photo" type="text" name="photo" class="form-control" placeholder="URL photo "  data-error="Entrez une url valide."> </div>
                                 </div>
                             </div>
+						      <!-- ajout fichier  -->
+							<div class="mb-3">
+                             <label for="screenshot" class="form-label">Votre fichier</label>
+                             <input type="file" class="form-control" id="screenshot" name="fichier" />
+                             </div>
+							
+							
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group"> <label for="form_message">Description complémentaire</label> <textarea id="description" name="description" class="form-control" placeholder="Entrez la description ici" rows="4" data-error="Please, leave us a message."></textarea> </div>

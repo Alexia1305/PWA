@@ -69,9 +69,15 @@
 			<p class="detailOutilText" onclick="affDetailsOutils(this)"><b>Description :</b> <?php echo $donnees['description'];  ?> </p>
 			<p class="detailOutilText" onclick="affDetailsOutils(this)"><b>Etat :</b> <?php echo $donnees['etat'];  ?> </p>
 			<p class="detailOutilText" onclick="affDetailsOutils(this)"><b>Quantitée : </b><?php echo $donnees['quantite'];  ?> </p>
-			<p class="detailOutilText" onclick="affDetailsOutils(this)"><b>Photo : </b></p>
+			<p class="detailOutilText" onclick="affDetailsOutils(this)"><b>Photo URL : </b></p>
 			<?php if($donnees['photo'] != ""){ ?>
 			<img src="<?php echo $donnees['photo'];  ?>" width="200px" >
+			<?php } else{?>
+				<p> Aucune</p>
+			<?php }?>
+			<p class="detailOutilText" onclick="affDetailsOutils(this)"><b>Photo fichier: </b></p>
+			<?php if($donnees['fichier'] != ""){ ?>
+			<img src="<?php echo $donnees['fichier'];  ?>" width="200px" >
 			<?php } else{?>
 				<p> Aucune</p>
 			<?php }?>
