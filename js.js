@@ -150,3 +150,8 @@ function affDetailsOutils(temp){
   window.location.href = "detailsOutils.php";
 }
 
+
+function actionValidee() {
+  alert("ok");
+document.getElementById('popup1Click').click();
+}

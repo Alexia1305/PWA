@@ -80,5 +80,70 @@
 		<?php } ?>
 
 
+
+
+<div class="box">
+	<a class="button" href="#popup1" id="popup1Click"></a>
+</div>
+
+
+<div id="popup1" class="overlay">
+	<div class="popup">
+		<div style="display: flex; justify-content: center; flex-direction: row;"><h2 style="margin-right: 2vh;">Parfait</h2><img src="Images/valid.png" width="7.5%"></div>
+		<a class="close" href="#">&times;</a>
+		<div class="content">
+			La modification des données à fonctionné parfaitement  !
+		</div>
+	</div>
+</div>
+
+<div class="box">
+	<a class="button" href="#popup2" id="popup1Click"></a>
+</div>
+
+
+<div id="popup2" class="overlay">
+	<div class="popup">
+		<div style="display: flex; justify-content: center; flex-direction: row;"><h2 style="margin-right: 2vh;">Erreur</h2><img src="Images/error-message.png" width="7.5%"></div>
+		<a class="close" href="#">&times;</a>
+		<div class="content">
+			Une erreur c'est produite, veuillez réessayer plus tard  !
+		</div>
+	</div>
+</div>
+
+
+<script type="text/javascript">
+	
+let params = new URLSearchParams(location.search);
+var valid = params.get('valid')
+
+
+
+
+
+ if(valid == 1){
+
+
+document.getElementById('popup1Click').click();
+
+}
+else{
+   document.getElementById('popup2Click').click();
+} 
+
+
+</script>
+
+
+
+
+
+<script type="text/javascript">
+	
+	temp = getCookie("id_outils");
+	document.getElementById("hiddenInput2").value = temp;
+
+</script>
 	</body>
 </html>

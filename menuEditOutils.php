@@ -52,7 +52,8 @@
                                     <div class="form-group"> <label for="form_message">Description complémentaire</label> <textarea id="description" name="description" class="form-control" placeholder="Entrez la description ici" rows="4" data-error="Please, leave us a message."></textarea> </div>
                                 </div>
                             </div>
-                                <input id="hiddenInput" type="hidden" name="id_boite" class="form-control" placeholder="Quantitée " value="1">
+                                <input id="hiddenInput" type="hidden" name="id_boite" class="form-control" value="1">
+                                <input id="hiddenInput2" type="hidden" name="id_outils" class="form-control" value="1">
                                 <div class="col-md-12"> <input type="submit" class="btn btn-success btn-send pt-2 btn-block " value="Send Message"> </div>
                             </div>
                         </div>
