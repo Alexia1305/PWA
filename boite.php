@@ -87,24 +87,24 @@ a:link
 
 <div class="registration-form" id="formNouvelBoite">
   <header>
-    <h1>Boîte à outils</h1>
-    <p>Remplissez les informations suivantes</p>
+    <h1 id="aj_boite">Boîte à outils</h1>
+    <p id="aj_in">Remplissez les informations suivantes</p>
   </header>
   <form action="addFirstBox.php" id="formFirstBox" method="post">
     <div class="input-section email-section">
-      <input class="email" type="text" placeholder="NOM DE VOTRE BOITE" autocomplete="off" name="boxName" />
+      <input id="aj_nom"class="email" type="text" placeholder="NOM DE VOTRE BOITE" autocomplete="off" name="boxName" />
       <div class="animated-button"><span class="icon-paper-plane"><i class="fa fa-text-width"></i></span><span class="next-button email"><i class="fa fa-arrow-up"></i></span></div>
     </div>
     <div class="input-section password-section folded">
-      <input class="password" type="text" placeholder="DESCRIPTION DE LA BOITE" name="boxDescription"/>
+      <input id="aj_des"class="password" type="text" placeholder="DESCRIPTION DE LA BOITE" name="boxDescription"/>
       <div class="animated-button"><span class="icon-lock"><i class="fa fa-comments-o"></i></span><span class="next-button password"><i class="fa fa-arrow-up"></i></span></div>
     </div>
     <div class="input-section repeat-password-section folded">
-      <input class="repeat-password" type="text" placeholder="AJOUTEZ VOTRE PREMIER OUTILS" name="boxFirstOutils" />
+      <input id="aj_outil" class="repeat-password" type="text" placeholder="AJOUTEZ VOTRE PREMIER OUTILS" name="boxFirstOutils" />
       <div class="animated-button"><span class="icon-repeat-lock"><i class="fa fa-wrench"></i></span><span class="next-button repeat-password" onclick="validFormFirstBox()"><i class="fa fa-paper-plane"></i></span></div>
     </div>
     <div class="success"> 
-      <p>BOITE CREEE</p>
+      <p id="aj_ok">BOITE CREEE</p>
     </div>
   </form>
 </div>
@@ -120,10 +120,25 @@ a:link
 ?>
 <?php while ($donnees = $reponse->fetch()) {
 ?>
+<?php if($_SESSION['langue'] =='fr')  {
 
+?>
 <div class="col-sm-12 boiteDesign" onclick="enregistrerClickBoite(this)" id="<?php echo $donnees['id_boite']; ?>">
-  <center><h1 style="font-family: 'Oswald', sans-serif;"> Boite <?php echo $donnees['nom']; ?></h1></center>
+  <center><h1 id="boite" style="font-family: 'Oswald', sans-serif;display: inline;"> Boite </h1><h1 style="font-family: 'Oswald', sans-serif;display: inline;"> <?php echo $donnees['nom']; ?></h1></center>
 </div>
+
+<?php
+} 
+if($_SESSION['langue']=='en'){
+
+?>
+<div class="col-sm-12 boiteDesign" onclick="enregistrerClickBoite(this)" id="<?php echo $donnees['id_boite']; ?>">
+  <center><h1 id="boite" style="font-family: 'Oswald', sans-serif;display: inline;"> Box</h1><h1 style="font-family: 'Oswald', sans-serif;display: inline;"> <?php echo $donnees['nom']; ?></h1></center>
+</div>
+<?php
+}
+?>
+
 
 
 
@@ -135,14 +150,14 @@ a:link
  <?php if($_SESSION['langue'] =='fr')  {
 
      ?>
-     <script>francais();</script>
+     <script>francais_boite();</script>
 
      <?php
    } 
    if($_SESSION['langue']=='en'){
 
      ?>
-     <script>anglais();</script>
+     <script>anglais_boite();</script>
      <?php
    }
 ?>

@@ -10,32 +10,40 @@
     <ul class="navbar-nav mr-auto">
 
       <li class="nav-item">
-        <a class="nav-link" href="outils.php">Vos outils</a>
+        <a class="nav-link" id="nav_outils" href="outils.php">Vos outils</a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="boite.php">Vos boîtes à outils</a>
+        <a class="nav-link" id="nav_boites"href="boite.php">Vos boîtes à outils</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="parametre.php">Paramètres</a>
+        <a class="nav-link"id="nav_para" href="parametre.php">Paramètres</a>
       </li>
 
 
     </ul>
-    <ul class="navbar-nav mr-auto">
-      <li>
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="Rechercher des outils" aria-label="Rechercher">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
-        </form>
-      </li>
-    </ul>
+    
 
     <ul class="navbar-nav mr-right">
 
       <li class="nav-item">
-        <a href="connect.php"><button class="btn btn-outline-light my-2 my-sm-0" type="submit" >Connexion</button></a>
+        <a href="connect.php"><button class="btn btn-outline-light my-2 my-sm-0" type="submit" id="nav_co">Connexion</button></a>
       </li>
     </ul>
   </div>
+  <p id="langueDeBase" style="display: none"><?php echo $_SESSION['langue']; ?> </p>
+ <?php if($_SESSION['langue'] =='fr')  {
+
+     ?>
+     <script>francais_nav();</script>
+
+     <?php
+   } 
+   if($_SESSION['langue']=='en'){
+
+     ?>
+     <script>anglais_nav();</script>
+     <?php
+   }
+?>
 </nav>

@@ -46,26 +46,40 @@
  
    
     <form method="post" >
-         <legend class="text-center"> LANGUES :</legend>
+         <legend id="lang"class="text-center"> LANGUES :</legend>
 		 <div class="container align-items-center">
-		 <p class="text-center">Francais</p>
+		 <p id="fra"class="text-center">Francais</p>
 		 <p class="text-center"> <img class="center" src="Images/france.png" style="margin-left:auto;margin-right:auto;cursor: pointer;" width="50px" height="50px" onclick="francais()"> 
          </p>
 		 </div>
 		 <div class="container align-items-center">
-		   <p class="text-center">Anglais</p>
+		   <p id="eng"class="text-center">Anglais</p>
 		 <p class="text-center"><img src="Images/uk.png" width="50px" height="50px" onclick="anglais()" style="cursor: pointer;"> 
          </p>
 		 </div>
 		</div>
         <p style="opacity: 0;">ggggggggggggggggggggggggggggggggggggggggggg</p>
-        <div class="text-center" >  <button type="submit" class="btn btn-primary">Valider</button></div>
+        <div class="text-center" >  <button id="val" type="submit" class="btn btn-primary">Valider</button></div>
 
     </form>
     
 
 </div>
+<p id="langueDeBase" style="display: none"><?php echo $_SESSION['langue']; ?> </p>
+ <?php if($_SESSION['langue'] =='fr')  {
 
+     ?>
+     <script>francais_par();</script>
+
+     <?php
+   } 
+   if($_SESSION['langue']=='en'){
+
+     ?>
+     <script>anglais_par();</script>
+     <?php
+   }
+?>
 
 <?php }
 

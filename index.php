@@ -64,6 +64,23 @@ if ($isPasswordCorrect) {
 <p style="font-family: 'Open Sans', sans-serif; "id="conseils"> Parcourez les différents menu pour créer votre première boite à outils.</p>
 </div>
 </center>
+
+<p id="langueDeBase" style="display: none"><?php echo $_SESSION['langue']; ?> </p>
+ <?php if($_SESSION['langue'] =='fr')  {
+
+     ?>
+     <script>francais_index();</script>
+
+     <?php
+   } 
+   if($_SESSION['langue']=='en'){
+
+     ?>
+     <script>anglais_index();</script>
+     <?php
+   }
+?>
+
 <?php 
 }
 
