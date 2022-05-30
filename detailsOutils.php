@@ -16,7 +16,8 @@
 	</head>
 
 	<body>
-		<script src="js.js"></script>
+		<script src="<?php echo 'js.js?='.time(); ?>"></script>
+		<script src="index.js"></script>
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
@@ -26,7 +27,21 @@
 		<?php include("dbconnect.php");  ?>
 		<?php include("menuEditOutils.php");  ?>
 
-		<div class="iconAddOutils" onclick="editOutils()"><img src="images/edition.png" width="30vh"></div>
+
+<form method="post" action="deleteOutils.php" name="deleteOutils">
+    <input type="hidden" name="idDeLOutilDelete" id="idDeLOutilDelete">
+</form>
+
+
+
+
+
+
+
+		<div class="iconAddOutils">
+			<img src="images/edition.png" width="30vh" onclick="editOutils()">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<img src="images/delete.png" width="30vh" onclick="deleteOutilss()">
+		</div>
 		<?php 
 		      $id_boite = htmlentities($_COOKIE['id_outils'], 7, 'UTF-8');
 
@@ -146,9 +161,16 @@ else{
 
 
 <script type="text/javascript">
-	
+function deleteOutils() {
+	alert("test");
+	document.deleteOutils.submit(); 
+}
+
 	temp = getCookie("id_outils");
 	document.getElementById("hiddenInput2").value = temp;
+
+	document.getElementById("idDeLOutilDelete").value = temp;
+
 
 </script>
 	</body>

@@ -143,6 +143,12 @@ function editOutils(){
 
   //document.getElementById("nomOutils").value = "test";
 }
+function deleteOutilss(){
+
+  document.deleteOutils.submit(); 
+
+  //document.getElementById("nomOutils").value = "test";
+}
 function affDetailsOutils(temp){
   
   var stockClick = temp.id;

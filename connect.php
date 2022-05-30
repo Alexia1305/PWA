@@ -35,15 +35,15 @@
 
               <div class="form-outline form-white mb-4">
                 <input type="email" id="mail" class="form-control form-control-lg" name="mail" />
-                <label class="form-label" for="typeEmailX">Email</label>
+                <label class="form-label" for="typeEmailX" style="color: white;">Email</label>
               </div>
 
               <div class="form-outline form-white mb-4">
                 <input type="password" id="mdp" class="form-control form-control-lg" name="mdp" />
-                <label class="form-label" for="typePasswordX">Password</label>
+                <label class="form-label" for="typePasswordX" style="color: white;">Password</label>
               </div>
 
-              <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">Forgot password?</a></p>
+              
 
               <button class="btn btn-outline-light btn-lg px-5" type="submit">Login</button>
 
@@ -55,10 +55,7 @@
 
             </div>
 
-            <div>
-              <p class="mb-0">Don't have an account? <a href="#!" class="text-white-50 fw-bold">Sign Up</a>
-              </p>
-            </div>
+
 
           </div>
         </div>
