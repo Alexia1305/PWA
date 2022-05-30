@@ -27,6 +27,23 @@
 		<?php include("menuEditOutils.php");  ?>
 
 		<div class="iconAddOutils" onclick="editOutils()"><img src="images/edition.png" width="30vh"></div>
+		<?php if(isset($_SESSION['langue'])){
+    ?><p id="langueDeBase" style="display: none"><?php echo $_SESSION['langue']; ?> </p><?php
+ if($_SESSION['langue'] =='fr')  {
+
+     ?>
+     <script>francais_do();</script>
+
+     <?php
+   } 
+   if($_SESSION['langue']=='en'){
+
+     ?>
+     <script>anglais_do();</script>
+     <?php
+   }
+ }
+?>
 		<?php 
 		      $id_boite = htmlentities($_COOKIE['id_outils'], 7, 'UTF-8');
 
@@ -58,28 +75,28 @@
 		      </script><?php	
 		?>
 
-<p id="langueDeBase" style="display: none"><?php echo $_SESSION['langue']; ?> </p>
+
 		<!-- Boucle ici pour chaque outils-->
 		<center>
 		<div id="detailsDesOutils">
-			<p class="detailOutilText" onclick="affDetailsOutils(this)"><b>Nom : </b><?php echo $donnees['fonction'];  ?> </p>
-			<p class="detailOutilText" onclick="affDetailsOutils(this)"><b>Marque : </b><?php echo $donnees['marque'];  ?> </p>
-			<p class="detailOutilText" onclick="affDetailsOutils(this)"><b>Garantie : </b><?php echo $donnees['garantie'];  ?> </p>
-			<p class="detailOutilText" onclick="affDetailsOutils(this)"><b>Date d'achat :</b> <?php echo $donnees['date_achat'];  ?> </p>
-			<p class="detailOutilText" onclick="affDetailsOutils(this)"><b>Description :</b> <?php echo $donnees['description'];  ?> </p>
-			<p class="detailOutilText" onclick="affDetailsOutils(this)"><b>Etat :</b> <?php echo $donnees['etat'];  ?> </p>
-			<p class="detailOutilText" onclick="affDetailsOutils(this)"><b>Quantitée : </b><?php echo $donnees['quantite'];  ?> </p>
-			<p class="detailOutilText" onclick="affDetailsOutils(this)"><b>Photo URL : </b></p>
+			<p class="detailOutilText" onclick="affDetailsOutils(this)"><b id="b_nom">Nom : </b><?php echo $donnees['fonction'];  ?> </p>
+			<p class="detailOutilText" onclick="affDetailsOutils(this)"><b  id="b_marque">Marque : </b><?php echo $donnees['marque'];  ?> </p>
+			<p class="detailOutilText" onclick="affDetailsOutils(this)"><b  id="b_garantie">Garantie : </b><?php echo $donnees['garantie'];  ?> </p>
+			<p class="detailOutilText" onclick="affDetailsOutils(this)"><b  id="b_date">Date d'achat :</b> <?php echo $donnees['date_achat'];  ?> </p>
+			<p class="detailOutilText" onclick="affDetailsOutils(this)"><b  id="b_desc">Description :</b> <?php echo $donnees['description'];  ?> </p>
+			<p class="detailOutilText" onclick="affDetailsOutils(this)"><b  id="b_etat">Etat :</b> <?php echo $donnees['etat'];  ?> </p>
+			<p class="detailOutilText" onclick="affDetailsOutils(this)"><b  id="b_q">Quantitée : </b><?php echo $donnees['quantite'];  ?> </p>
+			<p class="detailOutilText" onclick="affDetailsOutils(this)"><b  id="b_ph">Photo URL : </b></p>
 			<?php if($donnees['photo'] != ""){ ?>
 			<img src="<?php echo $donnees['photo'];  ?>" width="200px" >
 			<?php } else{?>
 				<p> Aucune</p>
 			<?php }?>
-			<p class="detailOutilText" onclick="affDetailsOutils(this)"><b>Photo fichier: </b></p>
+			<p class="detailOutilText" onclick="affDetailsOutils(this)"><b  id="b_f">Photo fichier: </b></p>
 			<?php if($donnees['fichier'] != ""){ ?>
 			<img src="<?php echo $donnees['fichier'];  ?>" width="200px" >
 			<?php } else{?>
-				<p> Aucune</p>
+				<p  id="b_r"> Aucune</p>
 			<?php }?>
 		</div>
 		</center>

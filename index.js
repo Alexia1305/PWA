@@ -201,3 +201,43 @@ function anglais_outil() {
 
 		
 }
+function francais_do() {
+	
+
+	//details outils 
+		document.getElementById("b_nom").innerHTML = "Nom";
+		document.getElementById("b_marque").innerHTML = "Marque";
+		document.getElementById("b_garantie").innerHTML = "Garantie";
+		document.getElementById("b_etat").innerHTML = "Etat";
+	
+		document.getElementById("b_date").innerHTML = "Date d'achat ";
+		document.getElementById("b_q").innerHTML = "Quantités";
+		document.getElementById("b_ph").innerHTML = "Photo";
+		document.getElementById("b_f").innerHTML = "Fichier";
+		document.getElementById("b_desc").innerHTML = "Description ";
+		document.getElementById("b_r").innerHTML = "Aucune ";
+	
+		
+	
+			
+	}
+function anglais_do() {
+	
+
+//details outils 
+	document.getElementById("b_nom").innerHTML = "Name";
+	document.getElementById("b_marque").innerHTML = "Brand";
+	document.getElementById("b_garantie").innerHTML = "Guarantee";
+	document.getElementById("b_etat").innerHTML = "State";
+
+	document.getElementById("b_date").innerHTML = "Date of purchase ";
+	document.getElementById("b_q").innerHTML = "Quantity";
+	document.getElementById("b_ph").innerHTML = "Picture";
+	document.getElementById("b_f").innerHTML = "File";
+	document.getElementById("b_desc").innerHTML = "Additional Description ";
+	document.getElementById("b_r").innerHTML = "None ";
+
+	
+
+		
+}
