@@ -14,11 +14,12 @@
 	<title>ToolBox</title>
 </head>
 <body>
+  <script src="index.js"></script>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-
+<p id="langueDeBase" style="display: none"><?php echo $_SESSION['langue']; ?> </p>
 
   <?php include("navbar.php");  ?>
   <?php include("dbconnect.php");  ?>
@@ -28,7 +29,7 @@
   if(isset($_POST['mail'])){
   $mail = $_POST['mail'];
 
-  $req = $bdd->prepare('SELECT mdp, mail, prenom,id_utilisateur,langue  FROM utilisateur WHERE mail = :mail');
+  $req = $bdd->prepare('SELECT *  FROM utilisateur WHERE mail = :mail');
   $req->execute(array('mail' => $mail));
   $resultat = $req->fetch();
 
@@ -46,11 +47,11 @@ if ($isPasswordCorrect) {
         $_SESSION['prenom'] = $resultat['prenom'];
         $_SESSION['langue'] = $resultat['langue'];
       }
-   if(isset($_SESSION['langue'])=='fr')  {
-     francais();
+   if($_SESSION['langue'] =='fr')  {
+     ?><script>francais();</script><?php
    } 
    if($_SESSION['langue']=='en'){
-     anglais();
+     ?><script>anglais();</script><?php
    }
 ?>
 <center>
@@ -71,7 +72,6 @@ else {
 
 
 ?>
-
 
 <center>
 <div class="d-flex justify-content-center col-lg-5 col-sm-12" style="margin-top: 5vh;"><img src="images/toolbox_0.png" width="100%"></div>

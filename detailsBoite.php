@@ -62,6 +62,7 @@
 <?php } ?>
 
 <!-- Menu ajout outils -->
+<p id="langueDeBase" style="display: none"><?php echo $_SESSION['langue']; ?> </p>
 <div class="container" id="addOutils" style="display:none">
 
     <div class="row ">

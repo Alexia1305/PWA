@@ -11,36 +11,57 @@ function closeFormOutils() {
 // Permet de changer la langue
 
 function francais() {
+	
 	const x = document.getElementById("langueDeBase").innerHTML;
+
 	
-	document.getElementById("paraa").innerHTML = "Paramètres";
-
-
-
-
-
-	document.getElementById("lla").value = "fr";
-
-
-	if (x !== "fr") {
 	
 
- 		document.formLa.submit(); }
+
+	if (x !== "fr" && x !== "fr ") {
+	
+		document.getElementById("lla").value = "fr";
+ 		document.formLa.submit(); 
+ 	}
+
+
+ 	document.getElementById("buttoncreate").innerHTML = "Créez votre boîte à outils !";
+
+
+
+}
+function francaisOutils() {
+	
+	const x = document.getElementById("langueDeBase").innerHTML;
+
+	
+	
+
+
+	if (x !== "fr" && x !== "fr ") {
+	
+		document.getElementById("lla").value = "fr";
+ 		document.formLa.submit(); 
+ 	}
+
+
+
+ 	document.getElementById("NameTh").innerHTML = "Name";
+
 
 }
 
 function anglais() {
-
+	
 	const x = document.getElementById("langueDeBase").innerHTML;
-	document.getElementById("paraa").innerHTML = "Settings";
 
 
-	document.getElementById("lla").value = "en";
-
-
-	if (x !== "en") {
+	if (x !== "en" && x !== "en ") {
 	
 
+		document.getElementById("lla").value = "en";
+		document.formLa.submit(); 
+	}
 
-		document.formLa.submit(); }
+		document.getElementById("buttoncreate").innerHTML = "MAKE YOUR FIRST TOOLBOX !";
 }
