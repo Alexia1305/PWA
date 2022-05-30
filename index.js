@@ -162,7 +162,10 @@ function francais_outil() {
 	document.getElementById("description").placeholder = "Entrez la description ici";
 	document.getElementById("valid").value = "Valid";
 
-	
+	document.getElementById("tri").innerHTML = "Trier par";
+	document.getElementById("Marque").innerHTML= "Marque";
+	document.getElementById("Etat").innerHTML = "Etat";
+	document.getElementById("Nom").innerHTML = "Nom";
 		
 }
 function anglais_outil() {
@@ -199,6 +202,10 @@ function anglais_outil() {
 	document.getElementById("description").placeholder = "Enter the description here";
 	document.getElementById("valid").value = "Validate";
 
+    document.getElementById("tri").innerHTML= "Sort by";
+	document.getElementById("Marque").innerHTML = "Brand";
+	document.getElementById("Etat").innerHTML = "State";
+	document.getElementById("Nom").innerHTML = "Name";
 		
 }
 function francais_do() {
@@ -236,6 +243,27 @@ function anglais_do() {
 	document.getElementById("b_f").innerHTML = "File";
 	document.getElementById("b_desc").innerHTML = "Additional Description ";
 	document.getElementById("b_r").innerHTML = "None ";
+
+	
+
+		
+}
+function francais_db() {
+	
+
+	//details outils 
+		document.getElementById("b_outils").innerHTML = "Outil :";
+		
+	
+		
+	
+			
+	}
+function anglais_db() {
+	
+
+//details outils 
+document.getElementById("b_outils").innerHTML = "Tool:";
 
 	
 

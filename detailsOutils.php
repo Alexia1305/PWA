@@ -21,31 +21,15 @@
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
+        <script src="index.js"></script>
 
 		<?php include("navbar.php");  ?>
 		<?php include("dbconnect.php");  ?>
 		<?php include("menuEditOutils.php");  ?>
 
 
-		<div class="iconAddOutils" onclick="editOutils()"><img src="images/edition.png" width="30vh"></div>
-		<?php if(isset($_SESSION['langue'])){
-    ?><p id="langueDeBase" style="display: none"><?php echo $_SESSION['langue']; ?> </p><?php
- if($_SESSION['langue'] =='fr')  {
-
-     ?>
-     <script>francais_do();</script>
-
-     <?php
-   } 
-   if($_SESSION['langue']=='en'){
-
-     ?>
-     <script>anglais_do();</script>
-     <?php
-   }
- }
-?>
+		
+		
 
 
 <form method="post" action="deleteOutils.php" name="deleteOutils">
@@ -98,7 +82,40 @@
 		<!-- Boucle ici pour chaque outils-->
 		<center>
 		<div id="detailsDesOutils">
-			<p class="detailOutilText" onclick="affDetailsOutils(this)"><b id="b_nom">Nom : </b><?php echo $donnees['fonction'];  ?> </p>
+		 <?php if(isset($_SESSION['langue'])){
+   			 ?><p id="langueDeBase" style="display: none"><?php echo $_SESSION['langue']; ?> </p><?php
+ 
+  			 if($_SESSION['langue']=='en'){
+				   
+
+  		   ?>
+			<p class="detailOutilText" onclick="affDetailsOutils(this)"><b  id="b_nom">Name : </b><?php echo $donnees['fonction'];  ?> </p>
+			<p class="detailOutilText" onclick="affDetailsOutils(this)"><b  id="b_marque">Brand : </b><?php echo $donnees['marque'];  ?> </p>
+			<p class="detailOutilText" onclick="affDetailsOutils(this)"><b  id="b_garantie">Guarantee : </b><?php echo $donnees['garantie'];  ?> </p>
+			<p class="detailOutilText" onclick="affDetailsOutils(this)"><b  id="b_date">Date of purchase :</b> <?php echo $donnees['date_achat'];  ?> </p>
+			<p class="detailOutilText" onclick="affDetailsOutils(this)"><b  id="b_desc">Description :</b> <?php echo $donnees['description'];  ?> </p>
+			<p class="detailOutilText" onclick="affDetailsOutils(this)"><b  id="b_etat">State :</b> <?php echo $donnees['etat'];  ?> </p>
+			<p class="detailOutilText" onclick="affDetailsOutils(this)"><b  id="b_q">Quantity : </b><?php echo $donnees['quantite'];  ?> </p>
+			<p class="detailOutilText" onclick="affDetailsOutils(this)"><b  id="b_ph">URL picture : </b></p>
+			<?php if($donnees['photo'] != ""){ ?>
+			<img src="<?php echo $donnees['photo'];  ?>" width="200px" >
+			<?php } else{?>
+				<p>None</p>
+			<?php }?>
+			<p class="detailOutilText" onclick="affDetailsOutils(this)"><b  id="b_f">File: </b></p>
+			<?php if($donnees['fichier'] != ""){ ?>
+			<img src="<?php echo $donnees['fichier'];  ?>" width="200px" >
+			<?php } else{?>
+				<p  id="b_r">None</p>
+			<?php }?>
+    	 <?php
+  		 }	
+   		else{
+		?>
+
+	
+
+			<p class="detailOutilText" onclick="affDetailsOutils(this)"><b  id="b_nom">Nom : </b><?php echo $donnees['fonction'];  ?> </p>
 			<p class="detailOutilText" onclick="affDetailsOutils(this)"><b  id="b_marque">Marque : </b><?php echo $donnees['marque'];  ?> </p>
 			<p class="detailOutilText" onclick="affDetailsOutils(this)"><b  id="b_garantie">Garantie : </b><?php echo $donnees['garantie'];  ?> </p>
 			<p class="detailOutilText" onclick="affDetailsOutils(this)"><b  id="b_date">Date d'achat :</b> <?php echo $donnees['date_achat'];  ?> </p>
@@ -117,6 +134,14 @@
 			<?php } else{?>
 				<p  id="b_r"> Aucune</p>
 			<?php }?>
+
+			<?php
+   }
+ }
+?>
+
+
+
 		</div>
 		</center>
 		<?php } ?>

@@ -54,14 +54,14 @@
 
 <div class="container" style="margin-bottom: 2%;">
     
-  
-      <div class="dropdown">
-        <div class="select"id="Trierpar">
-          <span>Trier par :</span>
-          <i class="fa fa-chevron-left"></i>
+  <div class="col-lg-3 col-md-6">
+      <div class="dropdown" style="margin_left:auto;margin_right:auto; ">
+        <div class="select"id="Trierpar" style="margin_left:auto;margin_right:auto">
+          <span> <h3  id="tri"style="color:#E762B7;">Trier par :</h3></span>
+          <i class="fa fa-chevron-left"style="margin_left:auto;margin_right:auto"></i>
         </div>
         <input type="hidden" name="gender">
-        <ul class="dropdown-menu">
+        <ul class="dropdown-menu"style="margin_left:auto;margin_right:auto">
           <li id="Marque">Marque</li>
           <li id="Etat">Etat</li>
           <li id="Nom">Nom</li>
@@ -69,6 +69,7 @@
       </div>
   
   
+</div>
 </div>
 <script type="text/javascript">
     
@@ -95,7 +96,7 @@ $('.dropdown-menu li').click(function () {
   $('.msg').html(msg + input + '</span>');
 
 
-   $("#sectionPatient1").load(" #sectionPatient1 > *");
+   $("#sectionOutils1").load(" #sectionOutils1 > *");
 
 if(input == "Nom"){
   setCookie('typeOrder',"fonction",700);
@@ -115,14 +116,14 @@ else{
         <div class="iconAddOutils" onclick="addOutils()"><img src="images/wrench.png" width="30vh"></div>
       </span>
 
-<section class="sectionPatient" id="sectionPatient1">
+<section class="sectionOutil" id="sectionOutil1">
 
 
 
      <?php 
-     echo "tet";
+    
      if(isset($_COOKIE['typeOrder'])){
-      echo "tet";
+    
         $typeorder = htmlentities($_COOKIE['typeOrder'], 7, 'UTF-8'); }
         else{
           $typeorder = "fonction";

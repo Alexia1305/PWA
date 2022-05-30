@@ -20,6 +20,7 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script src="js.js"></script>
+<script src="index.js"></script>
 
 <?php include("navbar.php");  ?>
 <?php include("dbconnect.php");  ?>
@@ -46,9 +47,10 @@
       $donnees = $reponse->fetch()
 ?>
 
+
 <div class="iconAddOutils" onclick="addOutils()"><img src="images/wrench.png" width="30vh"></div>
 <center><h1 id="titreBoite" class="boiteStyle" ><?php echo strtoupper ( $donnees['nom'] );  ?></h1></center>
-
+<br>
 <?php 
       $id_boite = htmlentities($_COOKIE['id_boite'], 7, 'UTF-8');
 
@@ -58,8 +60,27 @@
 ?>
 
 <!-- Boucle ici pour chaque outils-->
-<p style="color: black;" onclick="affDetailsOutils(this)" id="<?php echo $donnees['id_outils'];  ?>"><b>Outils :</b> <?php echo $donnees['fonction'];  ?> <p>
+<?php if(isset($_SESSION['langue'])) {
+    ?>
+    <p id="langueDeBase" style="display: none"><?php echo $_SESSION['langue']; ?> </p>
+    <?php
+      if($_SESSION['langue'] =='en')  {
+
+         ?>
+         <p class="text-center"style="color: black;" onclick="affDetailsOutils(this)" id="<?php echo $donnees['id_outils'];  ?>"><b id="b_outils">Tools :</b> <?php echo $donnees['fonction'];  ?> <p>
+     <?php } ?>
+     <?php } 
+      else{
+     ?>
+    <p class="text-center"style="color: black;" onclick="affDetailsOutils(this)" id="<?php echo $donnees['id_outils'];  ?>"><b id="b_outils">Outils:</b> <?php echo $donnees['fonction'];  ?> <p>
 <?php } ?>
+
+<?php } ?>
+
+     
+
+
+
 
 
 
