@@ -59,8 +59,8 @@ if ($isPasswordCorrect) {
 
 <center>
 <div class="col-sm-10 col-lg-8">
-<h1 class="" style="font-family: 'Oswald', sans-serif;"> Bienvenue sur ToolBox <?php echo($_SESSION['prenom']); ?> !</h1>
-<p style="font-family: 'Open Sans', sans-serif;"> Parcourez les différents menu pour créer votre première boite à outils.</p>
+<h1 class="" style="font-family: 'Oswald', sans-serif;"id="acceuil"> Bienvenue sur ToolBox <?php echo($_SESSION['prenom']); ?> !</h1>
+<p style="font-family: 'Open Sans', sans-serif; "id="conseils"> Parcourez les différents menu pour créer votre première boite à outils.</p>
 </div>
 </center>
 <?php 

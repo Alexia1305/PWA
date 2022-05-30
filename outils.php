@@ -41,15 +41,15 @@
       
      ?>
 	 <div class="table-responsive"> 
-     <table id="editableTable" class="table table-bordered "  table-striped"style="margin:20px "> 
+     <table id="editableTable" class="table table-bordered   table-striped"style="margin:20px "> 
        <thead> 
          <tr>
           
-          <th>Nom</th>
-          <th>Marque</th>
-          <th>Etat</th>
-          <th>Boite</th>
-          <th>Quantitée</th>
+          <th id="table_nom">Nom</th>
+          <th id="table_marque">Marque</th>
+          <th id="table_etat">Etat</th>
+          <th id="table_boite">Boite</th>
+          <th id="table_q">Quantitée</th>
         
 
          </tr>
