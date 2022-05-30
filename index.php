@@ -28,7 +28,7 @@
   if(isset($_POST['mail'])){
   $mail = $_POST['mail'];
 
-  $req = $bdd->prepare('SELECT mdp, mail, prenom,id_utilisateur  FROM utilisateur WHERE mail = :mail');
+  $req = $bdd->prepare('SELECT mdp, mail, prenom,id_utilisateur,langue  FROM utilisateur WHERE mail = :mail');
   $req->execute(array('mail' => $mail));
   $resultat = $req->fetch();
 
@@ -44,7 +44,14 @@ if ($isPasswordCorrect) {
   if(isset($_POST['mail'])){
         $_SESSION['id'] = $resultat['id_utilisateur'];
         $_SESSION['prenom'] = $resultat['prenom'];
+        $_SESSION['langue'] = $resultat['langue'];
       }
+   if(isset($_SESSION['langue'])=='fr')  {
+     francais();
+   } 
+   if($_SESSION['langue']=='en'){
+     anglais();
+   }
 ?>
 <center>
 <div class="d-flex justify-content-center col-lg-5 col-sm-12" style="margin-top: 5vh;"><img src="images/toolbox_0.png" width="100%"></div>

@@ -18,6 +18,7 @@
     <title>ToolBox</title>
 </head>
 <body>
+<script src="index.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
@@ -29,26 +30,36 @@
 
 <?php if(isset($_SESSION['id'])){ ?>
 
+<!-- langues de l'utilisateur envoyer au java script  -->
+
+<form method="post" action="modifLangue.php" name="formLa">
+    <input type="hidden" name="langueUser" id="lla">
+   
+</form>
+<p id="langueDeBase" style="display: none"><?php echo $_SESSION['langue']; ?> </p>
+
 <div class="container-fluid align-items-center"> 
     
 
 	<h1 class="text-center" style="margin-top:20px" id="paraa"> Paramètres <img src="Images/gear.png" width="60px" height="60px"> </h1>
-
+   
     
    
     <form method="post" >
          <legend class="text-center"> LANGUES </legend>
 		 <div class="container align-items-center">
 		 <p class="text-center">Francais</p>
-		 <p class="text-center"><img class="center" src="Images/france.png" style="margin-left:auto;margin-right:auto" width="50px" height="50px" onclick="francais()"><p/>
+		 <p class="text-center"> <img class="center" src="Images/france.png" style="margin-left:auto;margin-right:auto" width="50px" height="50px" onclick="francais()"> 
+         </p>
 		 </div>
 		 <div class="container align-items-center">
 		   <p class="text-center">Anglais</p>
-		 <p class="text-center"><img src="Images/uk.png" width="50px" height="50px" onclick="anglais()"><p/>
+		 <p class="text-center"><img src="Images/uk.png" width="50px" height="50px" onclick="anglais()"> 
+         </p>
 		 </div>
 		</div>
         <p style="opacity: 0;">ggggggggggggggggggggggggggggggggggggggggggg</p>
-        <div class="text-center" >  <button type="submit" class="btn btn-primary">Submit</button></div>
+        <div class="text-center" >  <button type="submit" class="btn btn-primary">Valider</button></div>
 
     </form>
     
