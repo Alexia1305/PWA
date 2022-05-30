@@ -23,12 +23,17 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script src="index.js"></script>
+<script src="js.js"></script>
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
     <script data-require="jquery@*" data-semver="2.2.0" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
       <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <script type="text/javascript" src="jquery.js"></script>
         <script type="text/javascript" src="jquery.autoheight.js"></script>
+
+
+
+
 
 <?php include("navbar.php");  ?>
 <?php include("dbconnect.php");  ?>
@@ -115,12 +120,17 @@ else{
 
 
      <?php 
+     echo "tet";
      if(isset($_COOKIE['typeOrder'])){
-        $typeorder = htmlentities($_COOKIE['typeOrder'], 7, 'UTF-8');
+      echo "tet";
+        $typeorder = htmlentities($_COOKIE['typeOrder'], 7, 'UTF-8'); }
+        else{
+          $typeorder = "fonction";
+        }
      
        $id_cet=$_SESSION['id'];
        $rep= $bdd->query("SELECT DISTINCT outils.* FROM outils JOIN boite ON boite.id_boite=outils.id_boite JOIN posseder ON posseder.id_boite=boite.id_boite JOIN utilisateur ON posseder.id_utilisateur=utilisateur.id_utilisateur WHERE utilisateur.id_utilisateur=$id_cet ORDER BY $typeorder" ); // Permet d'afficher le tableau avec les différents outils
-      }
+      
      ?>
  
 
