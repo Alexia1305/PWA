@@ -61,6 +61,90 @@
 <p style="color: black;" onclick="affDetailsOutils(this)" id="<?php echo $donnees['id_outils'];  ?>"><b>Outils :</b> <?php echo $donnees['fonction'];  ?> <p>
 <?php } ?>
 
+
+
+
+
+
+
+
+
+<div class="box">
+    <a class="button" href="#popup1" id="popup1Click"></a>
+</div>
+
+
+<div id="popup1" class="overlay">
+    <div class="popup">
+        <div style="display: flex; justify-content: center; flex-direction: row;"><h2 style="margin-right: 2vh;">Parfait</h2><img src="Images/valid.png" width="50vh "></div>
+        <a class="close" href="#">&times;</a>
+        <div class="content">
+           <center>L'outils a bien été supprimé  !</center> 
+        </div>
+    </div>
+</div>
+
+<div class="box">
+    <a class="button" href="#popup2" id="popup1Click"></a>
+</div>
+
+
+<div id="popup2" class="overlay">
+    <div class="popup">
+        <div style="display: flex; justify-content: center; flex-direction: row;"><h2 style="margin-right: 2vh;">Erreur</h2><img src="Images/error-message.png" width="7.5%"></div>
+        <a class="close" href="#">&times;</a>
+        <div class="content">
+            Une erreur c'est produite, veuillez réessayer plus tard  !
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    
+let params = new URLSearchParams(location.search);
+var valid = params.get('valid')
+
+
+
+
+
+ if(valid == 1){
+
+
+document.getElementById('popup1Click').click();
+
+}
+else{
+   document.getElementById('popup2Click').click();
+} 
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- Menu ajout outils -->
 <p id="langueDeBase" style="display: none"><?php echo $_SESSION['langue']; ?> </p>
 <div class="container" id="addOutils" style="display:none">
@@ -109,7 +193,7 @@
                                         <div class="form-group"> <label for="form_message">Description complémentaire</label> <textarea id="form_message" name="description" class="form-control" placeholder="Entrez la description ici" rows="4" data-error="Please, leave us a message."></textarea> </div>
                                     </div>
                                     <input id="hiddenInput" type="hidden" name="id_boite" class="form-control" placeholder="Quantitée " value="1">
-                                    <div class="col-md-12"> <input type="submit" class="btn btn-success btn-send pt-2 btn-block " value="Send Message"> </div>
+                                    <div class="col-md-12"> <input type="submit" class="btn btn-success btn-send pt-2 btn-block " value="Valider"> </div>
                                 </div>
                             </div>
                         </form>
@@ -119,6 +203,23 @@
         </div> <!-- /.row-->
     </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <script type="text/javascript">
     temp = getCookie("id_boite");
     document.getElementById("hiddenInput").value = temp;

@@ -23,6 +23,12 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script src="index.js"></script>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
+    <script data-require="jquery@*" data-semver="2.2.0" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+      <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script type="text/javascript" src="jquery.js"></script>
+        <script type="text/javascript" src="jquery.autoheight.js"></script>
 
 <?php include("navbar.php");  ?>
 <?php include("dbconnect.php");  ?>
@@ -33,15 +39,96 @@
  <div id="sectionOutils" >
 </div>
     <div class="container-fluid"  style="margin-top: 20px"> <!-- faire une version avec moins d'info pour téléphone -->
+
+
+
+
+
+
+
+
+<div class="container" style="margin-bottom: 2%;">
+    
+  
+      <div class="dropdown">
+        <div class="select"id="Trierpar">
+          <span>Trier par :</span>
+          <i class="fa fa-chevron-left"></i>
+        </div>
+        <input type="hidden" name="gender">
+        <ul class="dropdown-menu">
+          <li id="Marque">Marque</li>
+          <li id="Etat">Etat</li>
+          <li id="Nom">Nom</li>
+        </ul>
+      </div>
+  
+  
+</div>
+<script type="text/javascript">
+    
+/*Dropdown Menu*/
+$('.dropdown').click(function () {
+        $(this).attr('tabindex', 1).focus();
+        $(this).toggleClass('active');
+        $(this).find('.dropdown-menu').slideToggle(300);
+    });
+    $('.dropdown').focusout(function () {
+        $(this).removeClass('active');
+        $(this).find('.dropdown-menu').slideUp(300);
+    });
+    $('.dropdown .dropdown-menu li').click(function () {
+        $(this).parents('.dropdown').find('span').text($(this).text());
+        $(this).parents('.dropdown').find('input').attr('value', $(this).attr('id'));
+    });
+/*End Dropdown Menu*/
+
+
+$('.dropdown-menu li').click(function () {
+  var input = $(this).parents('.dropdown').find('input').val(),
+      msg = '<span class="msg">Hidden input value: ';
+  $('.msg').html(msg + input + '</span>');
+
+
+   $("#sectionPatient1").load(" #sectionPatient1 > *");
+
+if(input == "Nom"){
+  setCookie('typeOrder',"fonction",700);
+}
+else if(input == "Marque"){
+  setCookie('typeOrder',"marque",700);  
+}
+else{
+  setCookie('typeOrder',"etat",700);     
+}
+
+}); 
+
+
+</script>
       <span class="table-add float-right mb-3 mr-2">
         <div class="iconAddOutils" onclick="addOutils()"><img src="images/wrench.png" width="30vh"></div>
       </span>
+
+<section class="sectionPatient" id="sectionPatient1">
+
+
+
      <?php 
+     if(isset($_COOKIE['typeOrder'])){
+        $typeorder = htmlentities($_COOKIE['typeOrder'], 7, 'UTF-8');
+     
        $id_cet=$_SESSION['id'];
-       $rep= $bdd->query("SELECT DISTINCT outils.* FROM outils JOIN boite ON boite.id_boite=outils.id_boite JOIN posseder ON posseder.id_boite=boite.id_boite JOIN utilisateur ON posseder.id_utilisateur=utilisateur.id_utilisateur WHERE utilisateur.id_utilisateur=$id_cet" ); // Permet d'afficher le tableau avec les différents outils
-      
+       $rep= $bdd->query("SELECT DISTINCT outils.* FROM outils JOIN boite ON boite.id_boite=outils.id_boite JOIN posseder ON posseder.id_boite=boite.id_boite JOIN utilisateur ON posseder.id_utilisateur=utilisateur.id_utilisateur WHERE utilisateur.id_utilisateur=$id_cet ORDER BY $typeorder" ); // Permet d'afficher le tableau avec les différents outils
+      }
      ?>
-    
+ 
+
+
+
+
+
+
 	 <div class="table-responsive"> 
      <table id="editableTable" class="table table-bordered   table-striped"style="margin:20px "> 
        <thead> 
@@ -71,9 +158,10 @@
       </tbody>
     </table>
          </div>
- </div>
+       </section>
+
  
-</div>
+
 
 <?php if(isset($_SESSION['langue'])){
     ?><p id="langueDeBase" style="display: none"><?php echo $_SESSION['langue']; ?> </p><?php

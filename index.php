@@ -19,10 +19,13 @@
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-<p id="langueDeBase" style="display: none"><?php echo $_SESSION['langue']; ?> </p>
+
 
   <?php include("navbar.php");  ?>
   <?php include("dbconnect.php");  ?>
+
+
+
 
 <?php  $isPasswordCorrect = 0; ?>
 <?php if(isset($_POST['mail']) || isset($_SESSION['id'])){
@@ -34,6 +37,7 @@
   $resultat = $req->fetch();
 
   $isPasswordCorrect = password_verify($_POST['mdp'], $resultat['mdp']);
+
   }
   if(isset($_SESSION['id'])){
    $isPasswordCorrect = 1; 
@@ -41,11 +45,18 @@
 }
 
 
+
+
+
+
+
 if ($isPasswordCorrect) {
+
   if(isset($_POST['mail'])){
         $_SESSION['id'] = $resultat['id_utilisateur'];
         $_SESSION['prenom'] = $resultat['prenom'];
         $_SESSION['langue'] = $resultat['langue'];
+        ?><p id="langueDeBase" style="display: none"><?php echo $_SESSION['langue']; ?> </p><?php
       }
    if($_SESSION['langue'] =='fr')  {
      ?><script>francais();</script><?php
@@ -60,12 +71,13 @@ if ($isPasswordCorrect) {
 
 <center>
 <div class="col-sm-10 col-lg-8">
-<h1 class="" style="font-family: 'Oswald', sans-serif;"id="acceuil"> Bienvenue sur ToolBox <?php echo($_SESSION['prenom']); ?> !</h1>
+<h1 class="" style="font-family: 'Oswald', sans-serif;"id="acceuil"> Bienvenue sur ToolBox !</h1>
 <p style="font-family: 'Open Sans', sans-serif; "id="conseils"> Parcourez les différents menu pour créer votre première boite à outils.</p>
 </div>
 </center>
 
 <?php if(isset($_SESSION['langue'])){
+ 
     ?><p id="langueDeBase" style="display: none"><?php echo $_SESSION['langue']; ?> </p><?php
  if($_SESSION['langue'] =='fr')  {
 
@@ -98,7 +110,7 @@ else {
 
 <center>
 <div class="col-sm-10 col-lg-8">
-<h1 style="font-family: 'Oswald', sans-serif;"> Bienvenue sur ToolBox ! </h1>
+<h1 style="font-family: 'Oswald', sans-serif;"> Bienvenue ssur ToolBox ! </h1>
 <p style="font-family: 'Open Sans', sans-serif;"> Connectez vous pour commencer !</p>
 </div>
 </center>

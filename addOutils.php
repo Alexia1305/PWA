@@ -13,17 +13,47 @@ header('Location: detailsBoite.php');
 
 
 if(isset($_POST['name'])){
-    
-$fonction = htmlspecialchars($_POST['name']);
-$marque = htmlspecialchars($_POST['marque']);
-$garantie = htmlspecialchars($_POST['garantie']);
-$date_achat = htmlspecialchars($_POST['dateAchat']);
-$description = htmlspecialchars($_POST['description']);
-$etat = htmlspecialchars($_POST['etat']);
-$id_boite = htmlspecialchars($_POST['id_boite']);
-$quantite = htmlspecialchars($_POST['quantite']);
-$photo = htmlspecialchars($_POST['photo']);
+ 
+$fonction = null;
+$marque = null;
+$garantie = 0;
+$date_achat = "9999-01-01";
+$description = null;
+$etat = null;
+$quantite = 1;
+$photo = null;
+$fichier = null;
 
+if(isset($_POST['name']) && $_POST['name'] !== ""){
+    $fonction = htmlspecialchars($_POST['name']);    
+} 
+
+if(isset($_POST['marque'])  && $_POST['marque'] !== ""){
+    $marque = htmlspecialchars($_POST['marque']); 
+} 
+if(isset($_POST['garantie']) && $_POST['garantie'] !== ""){
+    $garantie = htmlspecialchars($_POST['garantie']);    
+} 
+if(isset($_POST['dateAchat']) && $_POST['dateAchat'] !== ""){
+    $date_achat = htmlspecialchars($_POST['dateAchat']);
+} 
+if(isset($_POST['description']) && $_POST['description'] !== ""){
+    $description = htmlspecialchars($_POST['description']);   
+} 
+if(isset($_POST['etat']) && $_POST['etat'] !== ""){
+    $etat = htmlspecialchars($_POST['etat']);
+} 
+if(isset($_POST['quantite']) && $_POST['quantite'] !== ""){
+   $quantite = htmlspecialchars($_POST['quantite']); 
+} 
+if(isset($_POST['photo']) && $_POST['photo'] !== ""){
+    $photo = htmlspecialchars($_POST['photo']);
+} 
+$id_boite = htmlspecialchars($_POST['id_boite']);
+
+echo $date_achat;
+
+/*
 
 // Testons si le fichier a bien été envoyé et s'il n'y a pas d'erreur
 if (isset($_FILES['fichier']) && $_FILES['fichier']['error'] == 0)
@@ -45,8 +75,12 @@ if (isset($_FILES['fichier']) && $_FILES['fichier']['error'] == 0)
         }
 }
 
+*/
 
 
+
+
+echo "test";
 
 $req = $bdd->prepare('INSERT INTO outils(fonction, marque, garantie, date_achat, description, etat, id_boite, quantite,photo,fichier) VALUES(:fonction, :marque, :garantie, :date_achat, :description, :etat, :id_boite, :quantite,:photo,:fichier)');
 
@@ -60,7 +94,7 @@ $req->execute(array(
     'id_boite' => $id_boite,
     'quantite' => $quantite,
     'photo' => $photo,
-	'fichier' => $fichier
+    'fichier' => $fichier
     )); 
 
 
