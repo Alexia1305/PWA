@@ -65,8 +65,9 @@
     
 
 </div>
-<p id="langueDeBase" style="display: none"><?php echo $_SESSION['langue']; ?> </p>
- <?php if($_SESSION['langue'] =='fr')  {
+<?php if(isset($_SESSION['langue'])){
+    ?><p id="langueDeBase" style="display: none"><?php echo $_SESSION['langue']; ?> </p><?php
+ if($_SESSION['langue'] =='fr')  {
 
      ?>
      <script>francais_par();</script>
@@ -79,6 +80,7 @@
      <script>anglais_par();</script>
      <?php
    }
+ }
 ?>
 
 <?php }

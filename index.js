@@ -90,7 +90,7 @@ function francais_nav() {
 	document.getElementById("nav_outils").innerHTML = "Vos Outils";
 	document.getElementById("nav_boites").innerHTML = "Vos boîtes à outils";
     document.getElementById("nav_para").innerHTML = "Paramètres";
-	document.getElementById("nav_rech").innerHTML = "Rechercher";
+
 	document.getElementById("nav_co").innerHTML = "Connexion";
 	
 
@@ -104,7 +104,7 @@ function anglais_nav() {
 document.getElementById("nav_outils").innerHTML = "Your tools";
 document.getElementById("nav_boites").innerHTML = "Your toolboxes";
 document.getElementById("nav_para").innerHTML = "Settings";
-document.getElementById("nav_rech").innerHTML = "Search";
+
 document.getElementById("nav_co").innerHTML = "Login";
 
 	
@@ -152,6 +152,16 @@ function francais_outil() {
 	document.getElementById("aj_photo").innerHTML = "Photo";
 	document.getElementById("aj_f").innerHTML = "Votre fichier";
 	document.getElementById("aj_des").innerHTML = "Description complémentaire";
+
+	document.getElementById("nomOutils").placeholder = "Entrez le nom de votre outils *";
+	document.getElementById("marque").placeholder = "Entrez la marque de votre outils";
+	document.getElementById("garantie").placeholder = "Date de validité de la garantie";
+	document.getElementById("dateAchat").placeholder = "Entrez la date d'achat ici";
+	document.getElementById("quantite").placeholder = "Quantité ";
+	document.getElementById("photo").placeholder = "URL photo ";
+	document.getElementById("description").placeholder = "Entrez la description ici";
+	document.getElementById("valid").value = "Valid";
+
 	
 		
 }
@@ -180,14 +190,14 @@ function anglais_outil() {
 	
 	document.getElementById("aj_des").innerHTML = "Additional Description ";
 
-	document.getElementById("nomOutils").placeholder = "";
-	document.getElementById("marque").placeholder = "";
-	document.getElementById("garantie").placeholder = "";
-	document.getElementById("etat").placeholder = "";
-	document.getElementById("dateAchat").placeholder = "";
-	document.getElementById("quantite").placeholder = "";
-	document.getElementById("photo").placeholder = "";
-	document.getElementById("description").placeholder = "";
+	document.getElementById("nomOutils").placeholder = "Enter the name of your tool *";
+	document.getElementById("marque").placeholder = "Enter the brand of your tool";
+	document.getElementById("garantie").placeholder = "Date of validity of the warranty";
+	document.getElementById("dateAchat").placeholder = "Enter the date of purchase here";
+	document.getElementById("quantite").placeholder = "Quantity ";
+	document.getElementById("photo").placeholder = "Photo URL ";
+	document.getElementById("description").placeholder = "Enter the description here";
+	document.getElementById("valid").value = "Validate";
 
 		
 }

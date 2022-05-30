@@ -146,8 +146,9 @@ if($_SESSION['langue']=='en'){
 </div>
 
 
-<p id="langueDeBase" style="display: none"><?php echo $_SESSION['langue']; ?> </p>
- <?php if($_SESSION['langue'] =='fr')  {
+<?php if(isset($_SESSION['langue'])){
+    ?><p id="langueDeBase" style="display: none"><?php echo $_SESSION['langue']; ?> </p><?php
+ if($_SESSION['langue'] =='fr')  {
 
      ?>
      <script>francais_boite();</script>
@@ -160,6 +161,7 @@ if($_SESSION['langue']=='en'){
      <script>anglais_boite();</script>
      <?php
    }
+ }
 ?>
 
 

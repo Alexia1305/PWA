@@ -65,8 +65,9 @@ if ($isPasswordCorrect) {
 </div>
 </center>
 
-<p id="langueDeBase" style="display: none"><?php echo $_SESSION['langue']; ?> </p>
- <?php if($_SESSION['langue'] =='fr')  {
+<?php if(isset($_SESSION['langue'])){
+    ?><p id="langueDeBase" style="display: none"><?php echo $_SESSION['langue']; ?> </p><?php
+ if($_SESSION['langue'] =='fr')  {
 
      ?>
      <script>francais_index();</script>
@@ -79,6 +80,7 @@ if ($isPasswordCorrect) {
      <script>anglais_index();</script>
      <?php
    }
+ }
 ?>
 
 <?php 

@@ -41,7 +41,7 @@
        $rep= $bdd->query("SELECT DISTINCT outils.* FROM outils JOIN boite ON boite.id_boite=outils.id_boite JOIN posseder ON posseder.id_boite=boite.id_boite JOIN utilisateur ON posseder.id_utilisateur=utilisateur.id_utilisateur WHERE utilisateur.id_utilisateur=$id_cet" ); // Permet d'afficher le tableau avec les différents outils
       
      ?>
-     <p id="langueDeBase" style="display: none"><?php echo $_SESSION['langue']; ?> </p>
+    
 	 <div class="table-responsive"> 
      <table id="editableTable" class="table table-bordered   table-striped"style="margin:20px "> 
        <thead> 
@@ -70,12 +70,14 @@
         <?php } ?>
       </tbody>
     </table>
-	<div/>
+         </div>
  </div>
  
 </div>
 
- <?php if($_SESSION['langue'] =='fr')  {
+<?php if(isset($_SESSION['langue'])){
+    ?><p id="langueDeBase" style="display: none"><?php echo $_SESSION['langue']; ?> </p><?php
+ if($_SESSION['langue'] =='fr')  {
 
      ?>
      <script>francais_outil();</script>
@@ -88,6 +90,7 @@
      <script>anglais_outil();</script>
      <?php
    }
+ }
 ?>
 <?php }
 

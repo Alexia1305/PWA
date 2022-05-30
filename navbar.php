@@ -31,8 +31,9 @@
       </li>
     </ul>
   </div>
-  <p id="langueDeBase" style="display: none"><?php echo $_SESSION['langue']; ?> </p>
- <?php if($_SESSION['langue'] =='fr')  {
+  <?php if(isset($_SESSION['langue'])){
+    ?><p id="langueDeBase" style="display: none"><?php echo $_SESSION['langue']; ?> </p><?php
+ if($_SESSION['langue'] =='fr')  {
 
      ?>
      <script>francais_nav();</script>
@@ -45,5 +46,6 @@
      <script>anglais_nav();</script>
      <?php
    }
+ }
 ?>
 </nav>

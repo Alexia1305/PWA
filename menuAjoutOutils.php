@@ -60,7 +60,7 @@
                                 </div>
                             </div>
                                 <input id="hiddenInput" type="hidden" name="id_boite" class="form-control" placeholder="Quantitée " value="1">
-                                <div class="col-md-12"> <input type="submit" class="btn btn-success btn-send pt-2 btn-block " value="Send Message"> </div>
+                                <div class="col-md-12"> <input type="submit" id="valid"class="btn btn-success btn-send pt-2 btn-block " value="Send Message"> </div>
                             </div>
                         </div>
                     </form>
