@@ -17,6 +17,7 @@
     <title>ToolBox</title>
 </head>
 <body>
+  <script type="text/javascript" src="index.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
@@ -40,16 +41,19 @@
        $rep= $bdd->query("SELECT DISTINCT outils.* FROM outils JOIN boite ON boite.id_boite=outils.id_boite JOIN posseder ON posseder.id_boite=boite.id_boite JOIN utilisateur ON posseder.id_utilisateur=utilisateur.id_utilisateur WHERE utilisateur.id_utilisateur=$id_cet" ); // Permet d'afficher le tableau avec les différents outils
       
      ?>
+     <p id="langueDeBase" style="display: none"><?php echo $_SESSION['langue']; ?> </p>
 	 <div class="table-responsive"> 
      <table id="editableTable" class="table table-bordered   table-striped"style="margin:20px "> 
        <thead> 
          <tr>
           
+
           <th id="table_nom">Nom</th>
           <th id="table_marque">Marque</th>
           <th id="table_etat">Etat</th>
           <th id="table_boite">Boite</th>
           <th id="table_q">Quantitée</th>
+
         
 
          </tr>
@@ -71,7 +75,20 @@
  
 </div>
 
+ <?php if($_SESSION['langue'] =='fr')  {
 
+     ?>
+     <script>francaisOutils();</script>
+
+     <?php
+   } 
+   if($_SESSION['langue']=='en'){
+
+     ?>
+     <script>anglais();</script>
+     <?php
+   }
+?>
 <?php }
 
 else{ ?>

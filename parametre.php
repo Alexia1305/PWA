@@ -43,18 +43,18 @@
 
 	<h1 class="text-center" style="margin-top:20px" id="paraa"> Paramètres <img src="Images/gear.png" width="60px" height="60px"> </h1>
    
-    
+ 
    
     <form method="post" >
-         <legend class="text-center"> LANGUES </legend>
+         <legend class="text-center"> LANGUES :</legend>
 		 <div class="container align-items-center">
 		 <p class="text-center">Francais</p>
-		 <p class="text-center"> <img class="center" src="Images/france.png" style="margin-left:auto;margin-right:auto" width="50px" height="50px" onclick="francais()"> 
+		 <p class="text-center"> <img class="center" src="Images/france.png" style="margin-left:auto;margin-right:auto;cursor: pointer;" width="50px" height="50px" onclick="francais()"> 
          </p>
 		 </div>
 		 <div class="container align-items-center">
 		   <p class="text-center">Anglais</p>
-		 <p class="text-center"><img src="Images/uk.png" width="50px" height="50px" onclick="anglais()"> 
+		 <p class="text-center"><img src="Images/uk.png" width="50px" height="50px" onclick="anglais()" style="cursor: pointer;"> 
          </p>
 		 </div>
 		</div>

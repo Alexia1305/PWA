@@ -58,7 +58,7 @@
 		      </script><?php	
 		?>
 
-
+<p id="langueDeBase" style="display: none"><?php echo $_SESSION['langue']; ?> </p>
 		<!-- Boucle ici pour chaque outils-->
 		<center>
 		<div id="detailsDesOutils">

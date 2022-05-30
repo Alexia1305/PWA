@@ -21,12 +21,16 @@
     
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
+<script src="index.js"></script>
 
 <?php include("navbar.php");  ?>
 <?php include("dbconnect.php");  ?>
 
+
+
 <?php if(isset($_SESSION['id'])){ ?>
+
+
 
 <center>
 <button class="button-54" role="button" id="buttoncreate" style="margin-top: 5vh; margin-bottom: 3vh;" onclick="create()">Créez votre boîte à outils !</button>
@@ -127,7 +131,21 @@ a:link
 </div>
 
 
+<p id="langueDeBase" style="display: none"><?php echo $_SESSION['langue']; ?> </p>
+ <?php if($_SESSION['langue'] =='fr')  {
 
+     ?>
+     <script>francais();</script>
+
+     <?php
+   } 
+   if($_SESSION['langue']=='en'){
+
+     ?>
+     <script>anglais();</script>
+     <?php
+   }
+?>
 
 
 
@@ -144,6 +162,7 @@ else{ ?>
 <p style="font-family: 'Open Sans', sans-serif;"> Connectez vous pour commencer !</p>
 </div>
 </center>
+
 <?php } ?>
 <script src="js.js"></script>
 </body>
